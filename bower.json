@@ -1,0 +1,13 @@
+{
+  "name": "comic-book-store",
+  "description": "online book store",
+  "main": "/main.js",
+  "authors": [
+    "composer2 <composer2be@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/TeamCatwoman/Comic-Book-Store",
+  "dependencies": {
+    "jquery": "^3.1.0"
+  }
+}

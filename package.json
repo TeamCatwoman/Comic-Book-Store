@@ -1,0 +1,26 @@
+{
+  "name": "comic-book-store",
+  "version": "1.0.0",
+  "description": "online book store",
+  "main": "/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"live-server",
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TeamCatwoman/Comic-Book-Store.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TeamCatwoman/Comic-Book-Store/issues"
+  },
+  "homepage": "https://github.com/TeamCatwoman/Comic-Book-Store#readme",
+  "dependencies": {
+    "handlebars": "^4.0.5",
+    "navigo": "^2.3.4",
+    "systemjs": "^0.19.38",
+    "systemjs-plugin-babel": "0.0.15"
+  }
+}
