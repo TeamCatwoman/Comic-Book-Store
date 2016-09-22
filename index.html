@@ -4,32 +4,66 @@
 <head>
     <meta charset="UTF-8">
     <title>Comic Book Store</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <div id="loader-wrapper">
-        <div id="loader"></div>
-
-        <div class="loader-section section-left"></div>
-        <div class="loader-section section-right"></div>
-    </div>
+    <nav class="navbar navbar-default navbar-fixed-top navigation-bar">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+                <a class="navbar-brand" href="#">COMIC BOOK STORE</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#about">Comics</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Marvel</a></li>
+                            <li><a href="#">DC</a></li>
+                            <!--<li role="separator" class="divider"></li>
+                            <li class="dropdown-header">Nav header</li>
+                            <li><a href="#">Separated link</a></li>
+                            <li><a href="#">One more separated link</a></li>-->
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li id="sign-in"><a href="#sign-in">Sign In<span class="sr-only"></span></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
     <div id="container"></div>
     <script src="./node_modules/systemjs/dist/system.js"></script>
-    <script>
-      SystemJs.config({
-        'transpiler':'plugin-babel',
+    <!--<script>
+        SystemJs.config({
+            'transpiler': 'plugin-babel',
+            'map': {
+                'plugin-babel': './node_modules/systemjs-plugin-babel/plugin-babel.js',
+                'systemjs-babel-build': './node_modules/systemjs-plugin-babel/systemjs-babel-browser.js',
+                'jquery': './bower_components/jquery/dist/jquery.js',
+                'handlebars': './node_modules/handlebars/dist/handlebars.js',
+                'navigo': './node_modules/navigo/lib/navigo.js',
+                'main': './main.js'
+            }
+        });
 
-        'map':{
-        'plugin-babel':'./node_modules/systemjs-plugin-babel/plugin-babel.js',
-        'systemjs-babel-build':'./node_modules/systemjs-plugin-babel/systemjs-babel-browser.js',
-        'jquery':'./bower_components/jquery/dist/jquery.js',
-        'handlebars':'./node_modules/handlebars/dist/handlebars.js',
-        'navigo':'./node_modules/navigo/lib/navigo.js',
-        'main':'./main.js'
-        }
-
-        System.import('main');  
-    </script>
+        //  System.import('main');
+    </script>-->
+    <script src="./bower_components/jquery/dist/jquery.js"></script>
+    <script src="scripts/navigationBarHandler.js"></script>
+    <script src="scripts/signInUser.js"></script>
 </body>
 
 </html>
