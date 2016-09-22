@@ -17,7 +17,7 @@ Teamwork in Javascript applications Course in Telerik Academy 2016-2017 Season.
 | Teodora Stoyanova |           teod_st                  | [TeodSt] (https://github.com/TeodSt)                  |
 
 
-[The brief video in YouTube](Coming soon on DVD nex week :-)
+[The brief video in YouTube] Coming soon on DVD next week :-)
 
 [Github repository](https://github.com/TeamCatwoman/Comic-Book-Store)
 
