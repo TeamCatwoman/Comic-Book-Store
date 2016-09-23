@@ -23,9 +23,9 @@ var router = (() => {
             //     .catch(console.log);
         })
         .on('register', () => {
-            // Promise.all(['get the data', tl.loadTemplate('load the template by name')])
-            //     .then(([data, template])=> $('#atach to DOM').html(template(data)))
-            //     .catch(console.log);
+            Promise.all([tl.loadTemplate('register')])
+                .then((template)=> $('#container').html(template))
+                .catch(console.log);
         })
         .on('log-in', () => {
             // Promise.all(['get the data', tl.loadTemplate('load the template by name')])

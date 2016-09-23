@@ -47,3 +47,20 @@ body {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
 }
+footer{
+    position:fixed;
+    left:0px;
+    bottom:0px;
+    height:30px;
+    width:100%;
+    background:#999;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    font-size: 1.2em;
+    font-weight: normal;
+    text-align: center;
+    color: white;
+}
+footer a{
+    color: white;
+}
