@@ -8,6 +8,7 @@
   "license": "MIT",
   "homepage": "https://github.com/TeamCatwoman/Comic-Book-Store",
   "dependencies": {
+    "bootstrap": "~3.3.7",
     "jquery": "^3.1.0"
   }
 }
