@@ -3,7 +3,7 @@ import { router } from './routing.js';
 
 $(() => { // on document ready
   const root = $('#root'),
-        navbar = root.find('navbar'),
+        navbar = root.find('#nav-login-form'),
         mainNav = navbar.find('#main-nav'),
         contentContainer = $('#container'),
         loginForm = $('#login'),
@@ -22,8 +22,9 @@ $(() => { // on document ready
         usernameInput.val('')
         usernameSpan.text(user);
         loginForm.addClass('hidden');
+        registerForm.addClass('hidden');
         logoutForm.removeClass('hidden');
-      })
+      });
   });
 
   navbar.on('click', '#btn-logout', (ev) => {
@@ -31,8 +32,9 @@ $(() => { // on document ready
     .then(() => {
       usernameSpan.text('');
       loginForm.removeClass('hidden');
+      registerForm.removeClass('hidden');
       logoutForm.addClass('hidden');
-    })
+    });
   });
   // end login/logout
 });

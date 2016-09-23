@@ -5,7 +5,7 @@
   "main": "/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"live-server"
+    "start": "live-server"
   },
   "repository": {
     "type": "git",
@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/TeamCatwoman/Comic-Book-Store#readme",
   "dependencies": {
+    "crypto-js": "^3.1.6",
     "handlebars": "^4.0.5",
     "navigo": "^2.3.4",
     "systemjs": "^0.19.38",
