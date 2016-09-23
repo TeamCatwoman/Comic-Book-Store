@@ -8,7 +8,8 @@ $(() => { // on document ready
     contentContainer = $('#container'),
     loginForm = $('#login'),
     logoutForm = $('#logout'),
-    registerForm = $('#register'),
+    registerForm = $('#btn-register-form'),
+    registerButton=$('#btn-register'),
     usernameSpan = $('#span-username'),
     usernameInput = $('#login-input'),
     userPassword=$('#login-password');
@@ -17,7 +18,6 @@ $(() => { // on document ready
 
   // start login/logout
   navbar.on('click', '#btn-login', (ev) => {
-    
     var user = {
       username: usernameInput.val() || 'anonymous',
       password: userPassword.val()
@@ -52,5 +52,16 @@ $('#btn-register').on('click', function () {
   };
   dataServer.users.register(user);
   console.log(user);
+});
+
+$('#root').on('click', '#btn-register-form', function (ev) {
+        $('#root').addClass(' blurred');
+        $('#root').addClass(' disabled-background');
+    });
+
+$('#container').on('click','#btn-register', function (ev) {
+  $('#root').removeClass('blurred');
+  $('#root').removeClass('disabled-background');
+  $('#container').html(""); //TODO after successfull register go to home page
 });
 //end register
