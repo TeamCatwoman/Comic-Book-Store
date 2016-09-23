@@ -1,7 +1,10 @@
 body {
     padding-top: 40px;
     padding-bottom: 40px;
-    background-color: #eee;
+    background: #eee;
+    background-image: url('../images/mainBackground.jpg');
+    background-repeat:no-repeat;
+    background-size:100%;
 }
 
 .form-signin {

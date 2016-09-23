@@ -1,0 +1,33 @@
+#register-holder {
+    border:1px solid black;
+    border-radius: 15px;
+    display: inline-block;
+    background-image: url('../images/register.jpg');
+    background-repeat: no-repeat;
+    background-size: 80vw;
+    background-position: center; 
+    margin-top: 10%;
+    margin-left: 25%;
+    width: 40vw; 
+    height: 40vh;
+}
+#label1 {
+    color:white;
+    font-size: 16px;
+    font-weight: bold;
+}
+#label2 {
+    color:black;
+    font-size: 16px;
+    font-weight: bold;
+}
+#register-holder form {
+    width: 30vw;
+    display: block;
+    margin: 20px auto;
+}
+
+#register-holder form #btn-register {
+    width: 100%;
+    margin-top: 10px;
+}
