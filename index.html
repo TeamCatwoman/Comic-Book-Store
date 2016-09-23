@@ -6,7 +6,7 @@
     <title>Comic Book Store</title>
 
     <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="./css/style.css">
     <!--libs-->
     <script src="./bower_components/jquery/dist/jquery.js"></script>
     <script src="./node_modules/handlebars/dist/handlebars.js"></script>
@@ -14,11 +14,12 @@
     <!--app-->
     <script src="./node_modules/systemjs/dist/system.js"></script>
     <script src="./scripts/system-config.js"></script>
+    <!--app-->
     <script src="scripts/navigationBarHandler.js"></script>
     <script src="scripts/signInUser.js"></script>
-    <!--<script>
-        //  System.import('main');
-    </script>-->
+    <script>
+          System.import('main');
+    </script>
 </head>
 
 <body>
@@ -56,7 +57,7 @@
                         </ul>
                         <form id="nav-login-form" class="navbar-form navbar-right">
                             <div id="login" class="form-group">
-                                <input type="text" class="form-control" placeholder="Username">
+                                <input id="login-input" type="text" class="form-control" placeholder="Username">
                                 <a href="#log-in" id="btn-login" type="submit" class="btn btn-default" class="navbar-link">Login</a>
                             </div>
                             <div id="logout" class="form-group hidden">
