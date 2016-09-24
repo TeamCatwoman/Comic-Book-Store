@@ -12,10 +12,10 @@
     };
 
     // Creating Objects
-    comicBook.create(comic).
-    then(function() {
-        console.log("Comic book created");
-    });
+    // comicBook.create(comic).
+    // then(function() {
+    //     console.log("Comic book created");
+    // });
 
     // we get all the comic books -> even the ones added from the site
     $("#comics").on("click", function() {

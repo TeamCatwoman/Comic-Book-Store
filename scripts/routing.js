@@ -3,6 +3,7 @@ import { templateLoader as tl } from './template-loader.js';
 import { books } from '../scripts/fakeDataBase.js';
 var router = (() => {
     let navigo;
+
     function init() {
         navigo = new Navigo(null, false);
 
@@ -29,6 +30,7 @@ var router = (() => {
                     .catch(console.log);
             })
             .on('register', () => {
+                debugger;
                 Promise.all([tl.loadTemplate('register')])
                     .then((template) => $('#container').html(template))
                     .catch(console.log);
