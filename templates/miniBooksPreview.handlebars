@@ -1,0 +1,19 @@
+<div id='mini-book-main'>
+    {{#allBooks}}
+    <div id='mini-book-preview'>
+        <div class="book-preview-img">
+            <a href="#zoomed-book-template">
+                <img class="image-preview" alt="{{name}}" src="{{image}}">
+            </a>
+        </div>
+        <div class="book-preview-info">
+            <h3 class="book-title">
+                <a href="#zoomed-book-template">
+                    <p>{{name}}<br/>
+                   written by {{author}}</p>
+                </a>
+            </h3>
+        </div>
+    </div>
+    {{/allBooks}}
+</div>
