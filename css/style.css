@@ -2,15 +2,17 @@ body {
     padding-top: 40px;
     padding-bottom: 40px;
 }
-#root{
+
+#root {
     position: absolute;
     width: 100vw;
     height: 100vh;
     background: #eee;
     background-image: url('../images/mainBackground.jpg');
-    background-repeat:no-repeat;
-    background-size:100%;
+    background-repeat: no-repeat;
+    background-size: 100%;
 }
+
 .form-signin {
     max-width: 330px;
     padding: 15px;
@@ -51,13 +53,14 @@ body {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
 }
-footer{
-    position:fixed;
-    left:0px;
-    bottom:0px;
-    height:30px;
-    width:100%;
-    background:#999;
+
+footer {
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    height: 30px;
+    width: 100%;
+    background: #999;
     padding-top: 5px;
     padding-bottom: 10px;
     font-size: 1.2em;
@@ -65,9 +68,11 @@ footer{
     text-align: center;
     color: white;
 }
-footer a{
+
+footer a {
     color: white;
 }
+
 .blurred {
     -webkit-filter: blur(10px);
     -moz-filter: blur(10px);
@@ -75,7 +80,6 @@ footer a{
     -ms-filter: blur(10px);
     filter: blur(10px);
 }
-
 
 .disabled-background {
     position: fixed;

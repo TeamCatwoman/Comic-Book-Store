@@ -18,11 +18,7 @@
     <script src="./node_modules/systemjs/dist/system.js"></script>
     <script src="./scripts/system-config.js"></script>
     <!--app-->
-    <script src="scripts/navigationBarHandler.js"></script>
-    <script src="scripts/signInUser.js"></script>
-    <script>
-          System.import('main');
-    </script>
+    <script src="./bower_components/everlive/min/everlive.all.min.js"></script>
 </head>
 
 <body>
@@ -31,8 +27,7 @@
             <nav class="navbar navbar-default navbar-fixed-top navigation-bar">
                 <div class="container">
                     <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-                            aria-controls="navbar">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -43,7 +38,7 @@
                     <div id="navbar" class="navbar-collapse collapse">
                         <ul id="main-nav" class="nav navbar-nav" class="nav nav-pills">
                             <li><a href="#home">Home</a></li>
-                            <li><a href="#about">Comics</a></li>
+                            <li id="comics"><a href="#about">Comics</a></li>
                             <li><a href="#contact">Contact</a></li>
                             <li class="dropdown" id="nav-dropdown">
                                 <a href="#categories" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories <span class="caret"></span></a>
@@ -77,14 +72,21 @@
             </nav>
         </header>
     </div>
-        <main>
-            <div id="container">
+    <main>
+        <div id="container">
 
-            </div>
-        </main>
-        <footer>
-            <p>Telerik Academy 2016 Created by developers <a href="#">Boncho Belutov</a> <a href="#">Teodora Stoyanova</a></p>
-        </footer>
+        </div>
+    </main>
+    <footer>
+        <p>Telerik Academy 2016 Created by developers <a href="#">Boncho Belutov</a> <a href="#">Teodora Stoyanova</a></p>
+    </footer>
+    <script src="scripts/navigationBarHandler.js"></script>
+    <script src="scripts/signInUser.js"></script>
+    <script src="scripts/data.js"></script>
+    <script>
+        System.import('main');
+    </script>
+
 </body>
 
 </html>
