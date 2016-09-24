@@ -8,10 +8,15 @@ var router = (() => {
 
         navigo
             .on('home', () => {
-                Promise.all([books, tl.loadTemplate('miniBooksPreview')])
-                    .then(([books,template]) => $('#container').html(template(books)))
+                Promise.all([tl.loadTemplate('home')])
+                    .then((template) => $('#container').html(template))
                     .catch(console.log);
-                    console.log(books.allBooks);
+            })
+            .on('container', () => {
+                Promise.all([books, tl.loadTemplate('miniBooksPreview')])
+                    .then(([books, template]) => $('#container').html(template(books)))
+                    .catch(console.log);
+                console.log(books.allBooks);
             })
             .on('about', () => {
                 // Promise.all(['get the data', tl.loadTemplate('load the template by name')])

@@ -1,5 +1,5 @@
 $("#btn-register").on("click", function() {
-    debugger;
+    //debugger;
 
     let username = $("#username-input").val(),
         email = $("#email-input").val,

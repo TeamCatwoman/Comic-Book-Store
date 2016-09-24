@@ -3,16 +3,6 @@ body {
     padding-bottom: 40px;
 }
 
-#root {
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
-    background: #eee;
-    background-image: url('../images/mainBackground.jpg');
-    background-repeat: no-repeat;
-    background-size: 100%;
-}
-
 .form-signin {
     max-width: 330px;
     padding: 15px;
