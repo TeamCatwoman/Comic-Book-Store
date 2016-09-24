@@ -1,35 +1,25 @@
-let container = $("#container"),
-    form = $("<form />"),
-    heading = $("<h2 />"),
-    input = $("<input />").addClass("form-control"),
-    label = $("<label />"),
-    div = $("<div />"),
-    button = $("<button />").addClass("btn btn-lg btn-block"),
-    headingFive = $("<h5 />");
+$("#btn-register").on("click", function() {
+    debugger;
 
-form.addClass("form-signin");
-heading.addClass("form-signin-heading");
+    let username = $("#username-input").val(),
+        email = $("#email-input").val,
+        age = $("#age-input").val,
+        password = $("#password-input").val;
 
+    var el = new Everlive('co50xbssvfni5o0s');
 
-$(".navbar-right").on("click", function(event) {
-    // debugger;
-    container.html("");
-    form.html("");
-    heading.html("Sign in");
-    form.append(heading);
-    label.html("Email address");
-    label.attr("id", "inputEmail");
-    form.append(label.clone(true));
-    form.append(input.clone(true));
-    label.html("Password");
-    label.attr("id", "inputPassword");
-    form.append(label.clone(true));
-    form.append(input.clone(true));
+    var attrs = {
+        Email: email,
+        Age: age
+    };
 
-    headingFive.html("* Not registered yet? Sign in here!");
-    form.append(headingFive);
-    // button.html("Sign in");
-    // form.append(button);
-
-    container.append(form);
+    el.Users.register(username,
+        password,
+        attrs,
+        function(data) {
+            alert(JSON.stringify(data));
+        },
+        function(error) {
+            alert(JSON.stringify(error));
+        });
 });

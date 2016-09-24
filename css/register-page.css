@@ -1,30 +1,35 @@
 #register-holder {
     position: relative;
     z-index: 101;
-    border:1px solid black;
+    border: 1px solid black;
     border-radius: 15px;
-    background-image: url('../images/register.jpg');
+    background-image: url('https://images5.alphacoders.com/432/432931.jpg');
     background-repeat: no-repeat;
     background-size: 80vw;
-    background-position: center; 
+    background-position: center;
     margin-top: 10%;
     margin-left: 25%;
-    width: 40vw; 
-    height: 40vh;
+    width: 50vw;
+    height: 65vh;
 }
-#label1 {
-    color:white;
+
+#username-label,
+#email,
+#age {
+    color: white;
     font-size: 16px;
     font-weight: bold;
 }
-#label2 {
-    color:black;
+
+#password-label {
+    color: black;
     font-size: 16px;
     font-weight: bold;
 }
+
 #register-holder form {
-    width: 30vw;
-    margin: 20px auto;
+    width: 20vw;
+    margin: 25px;
 }
 
 #register-holder form #btn-register {
