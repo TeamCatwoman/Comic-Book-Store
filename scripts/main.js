@@ -9,12 +9,14 @@ $(() => { // on document ready
     loginForm = $('#login'),
     logoutForm = $('#logout'),
     registerForm = $('#btn-register-form'),
-    registerButton=$('#btn-register'),
+    registerButton = $('#btn-register'),
     usernameSpan = $('#span-username'),
     usernameInput = $('#login-input'),
-    userPassword=$('#login-password');
+    userPassword = $('#login-password');
 
+  // start navigo
   router.init();
+  //end navigo
 
   // start login/logout
   navbar.on('click', '#btn-login', (ev) => {
@@ -55,11 +57,11 @@ $('#btn-register').on('click', function () {
 });
 
 $('#root').on('click', '#btn-register-form', function (ev) {
-        $('#root').addClass(' blurred');
-        $('#root').addClass(' disabled-background');
-    });
+  $('#root').addClass(' blurred');
+  $('#root').addClass(' disabled-background');
+});
 
-$('#container').on('click','#btn-register', function (ev) {
+$('#container').on('click', '#btn-register', function (ev) {
   $('#root').removeClass('blurred');
   $('#root').removeClass('disabled-background');
   $('#container').html(""); //TODO after successfull register go to home page

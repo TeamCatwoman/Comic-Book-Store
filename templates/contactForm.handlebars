@@ -1,0 +1,36 @@
+  <form id="contact_form" enctype="multipart/form-data">
+    	<div id=contact-right>
+    	    <div class="row">
+    	        <label for="name">Your name:</label><br />
+    	        <input id="contact-name" class="input" name="name" type="text" value="" size="30" /><br />
+    	    </div>
+    	    <div class="row">
+    	        <label for="email">Your email:</label><br />
+    	        <input id="contact-email" class="input" name="email" type="text" value="" size="30" /><br />
+    	    </div>
+    	    <div class="row">
+    	        <label for="message">Your message:</label><br />
+    	        <textarea id="contact-message" class="input" name="message" rows="7" cols="32"></textarea><br />
+    	    </div>
+    	    <div class="row" id="btn-contact-form">
+    	        <a href="#"><strong class="contact btn btn-success" >Send</strong></a>
+    	    </div>
+    	    <div class="row" id="btn-cancel-form">
+    	        <a href="#"><strong class="contact btn btn-danger" >Cancel</strong></a>
+    	    </div>
+    	</div>
+    	<div id=contact-right>
+    	    <div id="company-address">
+    	        <p><em>Company name:</em><br/>
+    	            <strong>{{name}}</strong><br/>
+    	            <em>Address:</em><br/>
+    	            <strong>{{address}}</strong><br/>
+    	            <em>City: Country:</em><br/>                            
+    	            <strong>{{city}}, {{country}}</strong><br/>
+    	            <em>Phone:</em><br/>                            
+    	            <strong>{{phone}}</strong><br/> 
+    	            <em>Fax:</em><br/>                            
+    	            <strong>{{fax}}</strong></p><br/> 
+    	    </div>
+    	</div>
+</form>
