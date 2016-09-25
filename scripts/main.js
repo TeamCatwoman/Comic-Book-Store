@@ -13,36 +13,39 @@ $(() => { // on document ready
     usernameSpan = $('#span-username'),
     usernameInput = $('#login-input'),
     userPassword=$('#login-password');
+   
 
   // start navigo
   router.init();
   //end navigo
 
   // start login/logout
-  navbar.on('click', '#btn-login', (ev) => {
-    var user = {
-      username: usernameInput.val() || 'anonymous',
-      password: userPassword.val()
-    };
-    dataServer.users.login(user)
-      .then((user) => {
-        usernameInput.val('');
-        usernameSpan.text(user);
-        loginForm.addClass('hidden');
-        registerForm.addClass('hidden');
-        logoutForm.removeClass('hidden');
-      });
-  });
+  // $('#btn-login').on('click', (ev) => {
+  //   var user = {
+  //     username: usernameInput.val() || 'anonymous',
+  //     password: userPassword.val()
+  //   };
+  //   dataServer.users.login(user)
+  //     .then((user) => {
+  //       usernameInput.val('');
+  //       usernameSpan.text(user.username);
+  //       loginForm.addClass('hidden');
+  //       registerForm.addClass('hidden');
+  //       logoutForm.removeClass('hidden');
+  //       logoutForm.css('color', 'white');
+  //       $("#span-username").css('color', 'white');
+  //     });
+  // });
 
-  navbar.on('click', '#btn-logout', (ev) => {
-    dataServer.users.logout()
-      .then(() => {
-        usernameSpan.text('');
-        loginForm.removeClass('hidden');
-        registerForm.removeClass('hidden');
-        logoutForm.addClass('hidden');
-      });
-  });
+  // $('#btn-logout').on('click', (ev) => {
+  //   dataServer.users.logout()
+  //     .then(() => {
+  //       usernameSpan.text('');
+  //       loginForm.removeClass('hidden');
+  //       registerForm.removeClass('hidden');
+  //       logoutForm.addClass('hidden');
+  //     });
+  // });
   // end login/logout
 });
 
