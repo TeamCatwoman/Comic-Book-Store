@@ -45,7 +45,7 @@ var router = (() => {
                     .then((template) => $('#container').html(template))
                     .then(() => {
                         $("#container-slider").addClass('hidden');
-                    })
+                    });
 
                 var data = everlive.data('contacts');
                 data.get()
