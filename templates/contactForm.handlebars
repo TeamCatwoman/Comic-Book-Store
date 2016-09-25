@@ -1,4 +1,4 @@
-  <form id="contact_form" enctype="multipart/form-data">
+  <form id="contact_form" enctype="multipart/form-data" method="post" enctype="text/plain">
     	<div id=contact-right>
     	    <div class="row">
     	        <label for="name">Your name:</label><br />
@@ -22,7 +22,7 @@
     	<div id=contact-right>
     	    <div id="company-address">
     	        <p><em>Company name:</em><br/>
-    	            <strong>{{name}}</strong><br/>
+    	            <strong>{{company}}</strong><br/>
     	            <em>Address:</em><br/>
     	            <strong>{{address}}</strong><br/>
     	            <em>City: Country:</em><br/>                            
@@ -30,7 +30,7 @@
     	            <em>Phone:</em><br/>                            
     	            <strong>{{phone}}</strong><br/> 
     	            <em>Fax:</em><br/>                            
-    	            <strong>{{fax}}</strong></p><br/> 
+    	            <strong>{{fax}}</strong></p><br/>
     	    </div>
     	</div>
 </form>
