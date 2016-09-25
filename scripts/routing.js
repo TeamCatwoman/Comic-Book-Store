@@ -22,6 +22,7 @@ var router = (() => {
             })
             .on('comic', () => {
                 comicBook.get()
+<<<<<<< HEAD
                     .then(function(data) {
                             let books = data;
                             Promise.all([books, tl.loadTemplate('miniBooksPreview')])
@@ -34,6 +35,19 @@ var router = (() => {
                     .then(() => {
                         $("#container-slider").removeClass('hidden');
                     });
+=======
+                    .then(function (data) {
+                        let books = data;
+                        Promise.all([books, tl.loadTemplate('miniBooksPreview')])
+                            .then(([books, template]) => $('#container').html(template(books)))
+                            .catch(console.log);
+                    },
+                    function (error) {
+                        alert(JSON.stringify(error));
+                    });
+
+
+>>>>>>> origin/master
                 // console.log(books.allBooks);
             })
             .on('about', () => {
@@ -42,12 +56,26 @@ var router = (() => {
                 //     .catch(console.log);
             })
             .on('contact', () => {
+<<<<<<< HEAD
                 Promise.all([tl.loadTemplate('contactForm')])
                     .then((template) => $('#container').html(template))
                     .then(() => {
                         $("#container-slider").addClass('hidden');
                     })
+=======
+                var el = new Everlive('co50xbssvfni5o0s');
+                var data = el.data('contacts');
+                data.get()
+                    .then(function (data) {
+                     let contacts=data.result[0];
+                     Promise.all([contacts,tl.loadTemplate('contactForm')])
+                         .then(([contacts,template]) => $('#container').html(template(contacts)))
+>>>>>>> origin/master
                     .catch(console.log);
+                    },
+                    function (error) {
+                        alert(JSON.stringify(error));
+                    });
             })
             .on('register', () => {
                 //debugger;
