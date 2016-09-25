@@ -13,7 +13,7 @@ $(() => { // on document ready
     registerForm = $('#btn-register-form'),
 
     usernameSpan = $('#span-username'),
-    usernameInput = $('#login-input'),
+    usernameInput = $('#login-input');
   // start navigo
   router.init();
   //end navigo
