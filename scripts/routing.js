@@ -1,5 +1,10 @@
 import { dataServer } from './dataServer.js';
 import { templateLoader as tl } from './template-loader.js';
+
+
+let everlive = new Everlive('co50xbssvfni5o0s');
+let comicBook = everlive.data('Comic');
+
 var router = (() => {
     let navigo;
 
@@ -10,12 +15,12 @@ var router = (() => {
             .on('home', () => {
                 Promise.all([tl.loadTemplate('home')])
                     .then((template) => $('#container').html(template))
+                    .then(() => {
+                        $("#container-slider").removeClass('hidden');
+                    })
                     .catch(console.log);
             })
             .on('comic', () => {
-                let everlive = new Everlive('co50xbssvfni5o0s');
-                let comicBook = everlive.data('Comic');
-
                 comicBook.get()
                     .then(function(data) {
                             let books = data;
@@ -25,9 +30,10 @@ var router = (() => {
                         },
                         function(error) {
                             alert(JSON.stringify(error));
-                        });
-
-
+                        })
+                    .then(() => {
+                        $("#container-slider").removeClass('hidden');
+                    });
                 // console.log(books.allBooks);
             })
             .on('about', () => {
@@ -38,13 +44,33 @@ var router = (() => {
             .on('contact', () => {
                 Promise.all([tl.loadTemplate('contactForm')])
                     .then((template) => $('#container').html(template))
+                    .then(() => {
+                        $("#container-slider").addClass('hidden');
+                    })
                     .catch(console.log);
             })
             .on('register', () => {
                 //debugger;
                 Promise.all([tl.loadTemplate('register')])
                     .then((template) => $('#container').html(template))
+                    .then(() => {
+                        $("#container-slider").removeClass('hidden');
+                    })
                     .catch(console.log);
+            })
+            .on('details/:id', (params) => {
+                comicBook.getById(params.id)
+                    .then(function(comics) {
+                        let data = comics.result;
+                        Promise.all([data, tl.loadTemplate('details')])
+                            .then(([data, template]) => $('#container').html(template(data)))
+                            .catch(console.log);
+                    }, function(error) {
+                        alert(JSON.stringify(error));
+                    })
+                    .then(() => {
+                        $("#container-slider").addClass('hidden');
+                    });
             })
             .on('log-in', () => {
                 // Promise.all(['get the data', tl.loadTemplate('load the template by name')])

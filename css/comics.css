@@ -3,6 +3,7 @@
     left: 150px;
     text-align: center;
     padding-top: 50px;
+    padding: 5px;
 }
 
 .comic-info {
@@ -19,8 +20,26 @@
     width: 200px;
     height: 250px;
     border: 1px solid #101010;
+    margin-bottom: 10px;
 }
 
 .comic-info>h4 {
     font-size: 28px;
+}
+
+.detailed-imgs {
+    width: 250px;
+}
+
+#comic-book-holder {
+    margin-right: auto;
+    margin-left: auto;
+    background-color: #eee;
+    padding: 30px;
+    border-radius: 10px;
+    width: 800px
+}
+
+.buttons {
+    text-align: center;
 }
