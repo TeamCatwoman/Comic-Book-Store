@@ -1,6 +1,5 @@
 import { dataServer } from './dataServer.js';
 import { templateLoader as tl } from './template-loader.js';
-import { books as b } from '../scripts/fakeDataBase.js';
 var router = (() => {
     let navigo;
 
@@ -42,7 +41,7 @@ var router = (() => {
                     .catch(console.log);
             })
             .on('register', () => {
-                debugger;
+                //debugger;
                 Promise.all([tl.loadTemplate('register')])
                     .then((template) => $('#container').html(template))
                     .catch(console.log);

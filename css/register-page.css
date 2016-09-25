@@ -1,13 +1,13 @@
 #register-holder {
-    position: relative;
-    z-index: 101;
+    position: absolute;
+    z-index: 200;
     border: 1px solid black;
     border-radius: 15px;
     background-image: url('https://images5.alphacoders.com/432/432931.jpg');
     background-repeat: no-repeat;
     background-size: 80vw;
     background-position: center;
-    margin-top: 10%;
+    margin-top: 0%;
     margin-left: 25%;
     width: 50vw;
     height: 65vh;
@@ -35,4 +35,8 @@
 #register-holder form #btn-register {
     width: 100%;
     margin-top: 10px;
+}
+#btn-cancel{
+    width: 100%;
+    margin-top: 10px;    
 }

@@ -1,7 +1,7 @@
 (function() {
     let everlive = new Everlive('co50xbssvfni5o0s');
     let comicBook = everlive.data('Comic');
-
+console.log(comicBook);
     // let comic = {
     //     Title: 'Batman',
     //     Author: 'Joker',
