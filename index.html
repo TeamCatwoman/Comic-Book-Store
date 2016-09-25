@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/register-page.css">
     <link rel="stylesheet" href="./css/contactForm.css">
+    <link rel="stylesheet" href="./css/comics.css">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -25,8 +26,7 @@
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="margin-bottom: 0px;">
             <div class="container">
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-                        aria-controls="navbar">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -37,7 +37,7 @@
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav nav-pills">
                         <li><a href="#home">Home</a></li>
-                        <li id="comics"><a href="#about">Comics</a></li>
+                        <li id="comics"><a href="#comic">Comics</a></li>
                         <li class="dropdown" id="nav-dropdown">
                             <a href="#categories" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories  <span class="caret"></span></a>
                             <ul class="dropdown-menu">
@@ -68,48 +68,48 @@
         </nav>
     </div>
     <div id="container-slider">
-<div class="container">
-<!-- Use a container to wrap the slider, the purpose is to enable slider to always fit width of the wrapper while window resize -->
-        <!-- Jssor Slider Begin -->
-        <div id="slider1_container" style="visibility: hidden; position: relative; margin: 0 auto; width: 1140px; height: 442px; overflow: hidden;">
-            <!-- Loading Screen -->
-            <div u="loading" style="position: absolute; top: 0px; left: 0px;">
-                <div style="filter: alpha(opacity=70); opacity:0.7; position: absolute; display: block; background-color: #000; top: 0px; left: 0px;width: 100%; height:100%;">
+        <div class="container">
+            <!-- Use a container to wrap the slider, the purpose is to enable slider to always fit width of the wrapper while window resize -->
+            <!-- Jssor Slider Begin -->
+            <div id="slider1_container" style="visibility: hidden; position: relative; margin: 0 auto; width: 1140px; height: 442px; overflow: hidden;">
+                <!-- Loading Screen -->
+                <div u="loading" style="position: absolute; top: 0px; left: 0px;">
+                    <div style="filter: alpha(opacity=70); opacity:0.7; position: absolute; display: block; background-color: #000; top: 0px; left: 0px;width: 100%; height:100%;">
+                    </div>
+                    <div style="position: absolute; display: block; background: url(./images/loading.gif) no-repeat center center; top: 0px; left: 0px;width: 100%;height:100%;">
+                    </div>
                 </div>
-                <div style="position: absolute; display: block; background: url(./images/loading.gif) no-repeat center center; top: 0px; left: 0px;width: 100%;height:100%;">
+                <!-- Slides Container -->
+                <div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 1140px; height: 442px; overflow: hidden;">
+                    <div>
+                        <img u="image" src2="./images/home/01.jpg" />
+                    </div>
+                    <div>
+                        <img u="image" src2="./images/home/02.jpg" />
+                    </div>
+                    <div>
+                        <img u="image" src2="./images/home/03.jpg" />
+                    </div>
+                    <div>
+                        <img u="image" src2="./images/home/04.jpg" />
+                    </div>
                 </div>
-            </div>
-            <!-- Slides Container -->
-            <div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 1140px; height: 442px; overflow: hidden;">
-                <div>
-                    <img u="image" src2="./images/home/01.jpg" />
+                <!--#region Bullet Navigator Skin Begin -->
+                <!-- bullet navigator container -->
+                <div u="navigator" class="jssorb05" style="bottom: 16px; right: 6px;">
+                    <!-- bullet navigator item prototype -->
+                    <div u="prototype"></div>
                 </div>
-                <div>
-                    <img u="image" src2="./images/home/02.jpg" />
-                </div>
-                <div>
-                    <img u="image" src2="./images/home/03.jpg" />
-                </div>
-                <div>
-                    <img u="image" src2="./images/home/04.jpg" />
-                </div>
-            </div>
-            <!--#region Bullet Navigator Skin Begin -->
-            <!-- bullet navigator container -->
-            <div u="navigator" class="jssorb05" style="bottom: 16px; right: 6px;">
-                <!-- bullet navigator item prototype -->
-                <div u="prototype"></div>
-            </div>
-            <!-- Arrow Left -->
-            <span u="arrowleft" class="jssora11l" style="top: 123px; left: 8px;">
+                <!-- Arrow Left -->
+                <span u="arrowleft" class="jssora11l" style="top: 123px; left: 8px;">
             </span>
-            <!-- Arrow Right -->
-            <span u="arrowright" class="jssora11r" style="top: 123px; right: 8px;">
+                <!-- Arrow Right -->
+                <span u="arrowright" class="jssora11r" style="top: 123px; right: 8px;">
             </span>
-            <!--#endregion Arrow Navigator Skin End -->
+                <!--#endregion Arrow Navigator Skin End -->
+            </div>
+            <!-- Jssor Slider End -->
         </div>
-        <!-- Jssor Slider End -->
-</div>
     </div>
     <main>
         <div id="container">
@@ -138,7 +138,6 @@
     <!--lib-->
     <!--app-->
     <script src="./scripts/system-config.js"></script>
-    <script src="scripts/data.js"></script>
     <script src="scripts/navigationBarHandler.js"></script>
     <script src="scripts/signInUser.js"></script>
     <!--app-->

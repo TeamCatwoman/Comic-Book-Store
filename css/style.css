@@ -79,3 +79,9 @@ footer a {
     height: 100vh;
     z-index: 100;
 }
+
+#logout {
+    color: white;
+    position: absolute;
+    right: 15px;
+}

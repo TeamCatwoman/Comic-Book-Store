@@ -1,18 +1,18 @@
 let User = (function() {
     class User {
-        constructor(name, age, email, password) {
-            this.name = name;
+        constructor(username, age, email, password) {
+            this.username = username;
             this.age = age;
             this.email = email;
             this.password = password;
         }
 
-        get name() {
-            return this._name;
+        get username() {
+            return this._username;
         }
 
-        set name(value) {
-            this._name = value;
+        set username(value) {
+            this._username = value;
         }
 
         get age() {
@@ -42,3 +42,5 @@ let User = (function() {
 
     return User;
 })();
+
+export { User };

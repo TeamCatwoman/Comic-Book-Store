@@ -1,19 +1,32 @@
-<div id='mini-book-main'>
-    {{#allBooks}}
+<!--<div id='mini-book-main'>
+    {{#result}}
     <div id='mini-book-preview'>
         <div class="book-preview-img">
             <a href="#zoomed-book-template">
-                <img class="image-preview" alt="{{name}}" src="{{image}}">
+                <img class="image-preview" alt="{{Title}}" src="{{ImageSrc}}" width="150px">
             </a>
         </div>
         <div class="book-preview-info">
             <h3 class="book-title">
                 <a href="#zoomed-book-template">
-                    <p>{{name}}<br/>
-                   written by {{author}}</p>
+                    <p>{{Title}}<br/>
+                   written by {{Author}}</p>
                 </a>
             </h3>
         </div>
     </div>
-    {{/allBooks}}
+    {{/result}}
+</div>-->
+
+<div id='mini-book-main'>
+    {{#result}}
+     <div class="col-md-4 col-sm-4 col-xs-6 item center-block">
+        <div class="comic-info">
+            <h4 class="featurette-heading">{{Title}}</h4>
+            <h6>Author: {{Author}}</h6>
+            <img src="{{ImageSrc}}" class="comic-img" alt="{{Title}}">
+            <p><a href="#">View more </a></p>
+        </div>
+    </div>  
+    {{/result}}
 </div>
