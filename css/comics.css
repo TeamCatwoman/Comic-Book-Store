@@ -1,0 +1,26 @@
+#mini-book-main {
+    position: absolute;
+    left: 150px;
+    text-align: center;
+    padding-top: 50px;
+}
+
+.comic-info {
+    color: #101010;
+    font-size: 22px;
+}
+
+.item {
+    width: 250px;
+}
+
+.comic-img {
+    display: inline-block;
+    width: 200px;
+    height: 250px;
+    border: 1px solid #101010;
+}
+
+.comic-info>h4 {
+    font-size: 28px;
+}
