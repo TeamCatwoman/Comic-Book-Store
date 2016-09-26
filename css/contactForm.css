@@ -5,7 +5,10 @@
     float: left;
 }
 #contact_form{
-    background-color: white;
+    background-image: url('https://images5.alphacoders.com/432/432931.jpg');
+    background-repeat: no-repeat;
+    background-size: 80vw;
+    background-position: center;
     position: relative;
     border:10px solid black;
     border-radius: 15px;    
