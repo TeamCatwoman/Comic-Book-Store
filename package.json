@@ -24,6 +24,10 @@
     "navigo": "^2.3.4",
     "nodemailer": "^2.6.4",
     "systemjs": "^0.19.38",
-    "systemjs-plugin-babel": "0.0.15"
+    "systemjs-plugin-babel": "0.0.15",
+    "less": "2.5.3",
+    "less-plugin-clean-css": "1.5.1",
+    "standard": "6.0.7",
+    "uglify-js": "2.6.1"
   }
 }

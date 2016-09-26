@@ -85,6 +85,7 @@ var router = (() => {
             .on('hot', () => {
                 Promise.all([dataServer.get.book(), tl.loadTemplate('online')])
                     .then(([data, template]) => {
+                        $("#comic-book-holder").removeClass('hidden');
                         $("#container-slider").addClass('hidden');
                         $('#container').append("<div id='hot' />");
                         $("#hot").html(template(data[0]));
@@ -92,9 +93,14 @@ var router = (() => {
                     .catch(console.log);
             })
             .on('hot/read', () => {
-                // Promise.all(['get the data', tl.loadTemplate('load the template by name')])
-                //     .then(([data, template])=> $('#atach to DOM').html(template(data)))
-                //     .catch(console.log);
+                Promise.all([tl.loadTemplate('gallery'), tl.loadTemplate('blueimpGallery')])
+                    .then(([template1, template2])=> {
+                        $("#comic-book-holder").addClass('hidden');                        
+                        $("#container-slider").addClass('hidden');
+                        $('#container-gallery').html(template1);
+                        $('#blueimp-gallery').html(template2);
+                    })
+                    .catch(console.log);
             }).resolve();
     }
     return {
