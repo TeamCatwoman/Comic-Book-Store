@@ -18,11 +18,9 @@
   },
   "homepage": "https://github.com/TeamCatwoman/Comic-Book-Store#readme",
   "dependencies": {
-    "crypto-js": "^3.1.6",
     "handlebars": "^4.0.5",
     "holderjs": "^2.9.4",
     "navigo": "^2.3.4",
-    "nodemailer": "^2.6.4",
     "systemjs": "^0.19.38",
     "systemjs-plugin-babel": "0.0.15",
     "less": "2.5.3",
