@@ -97,7 +97,7 @@ var router = (() => {
                     .then(([template])=> {
                         $("#comic-book-holder").addClass('hidden');                        
                         $("#container-slider").addClass('hidden');
-                        $('#gallery').html(template);
+                        $('#container').html(template);
                     })
                     .catch(console.log);
             }).resolve();
