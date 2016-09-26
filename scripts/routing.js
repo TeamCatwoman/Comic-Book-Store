@@ -82,10 +82,10 @@ var router = (() => {
                         $("#container-slider").addClass('hidden');
                     });
             })
-            .on('log-in', () => {
-                // Promise.all(['get the data', tl.loadTemplate('load the template by name')])
-                //     .then(([data, template])=> $('#atach to DOM').html(template(data)))
-                //     .catch(console.log);
+            .on('hot', () => {
+                Promise.all([dataServer.get.book(), tl.loadTemplate('details')])
+                    .then(([data, template])=> $('#container').html(template(data[0])))
+                    .catch(console.log);
             })
             .on('log-out', () => {
                 // Promise.all(['get the data', tl.loadTemplate('load the template by name')])
