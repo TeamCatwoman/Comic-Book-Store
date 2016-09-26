@@ -93,12 +93,11 @@ var router = (() => {
                     .catch(console.log);
             })
             .on('hot/read', () => {
-                Promise.all([tl.loadTemplate('gallery'), tl.loadTemplate('blueimpGallery')])
-                    .then(([template1, template2])=> {
+                Promise.all([tl.loadTemplate('gallery')])
+                    .then(([template])=> {
                         $("#comic-book-holder").addClass('hidden');                        
                         $("#container-slider").addClass('hidden');
-                        $('#container-gallery').html(template1);
-                        $('#blueimp-gallery').html(template2);
+                        $('#gallery').html(template);
                     })
                     .catch(console.log);
             }).resolve();
