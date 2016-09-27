@@ -5,9 +5,12 @@
     padding-top: 50px;
     padding: 5px;
 }
+
 .comic-info {
-    color: #101010;
-    font-size: 22px;
+    vertical-align: middle;
+    text-overflow: ellipsis;
+    width: 240px;
+    height: 420px;
 }
 
 .item {
@@ -22,8 +25,10 @@
     margin-bottom: 10px;
 }
 
-.comic-info>h4 {
-    font-size: 28px;
+.comic-info>div {
+    font-size: 24px;
+    height: 60px;
+    vertical-align: middle;
 }
 
 .detailed-imgs {
@@ -42,6 +47,8 @@
 .buttons {
     text-align: center;
 }
+
+
 /*.fixed-title{
     text-align: center;
     height: 10px;

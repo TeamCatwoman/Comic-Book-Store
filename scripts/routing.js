@@ -3,7 +3,7 @@ import { templateLoader as tl } from './template-loader.js';
 
 
 let everlive = new Everlive('co50xbssvfni5o0s');
-let comicBook = everlive.data('Comic');
+let comicBook = everlive.data('ComicBook');
 
 var router = (() => {
     let navigo;
@@ -22,15 +22,15 @@ var router = (() => {
             })
             .on('comic', () => {
                 comicBook.get()
-                    .then(function (data) {
-                        let books = data;
-                        Promise.all([books, tl.loadTemplate('miniBooksPreview')])
-                            .then(([books, template]) => $('#container').html(template(books)))
-                            .catch(console.log);
-                    },
-                    function (error) {
-                        alert(JSON.stringify(error));
-                    })
+                    .then(function(data) {
+                            let books = data;
+                            Promise.all([books, tl.loadTemplate('comicBooksPreview')])
+                                .then(([books, template]) => $('#container').html(template(books)))
+                                .catch(console.log);
+                        },
+                        function(error) {
+                            alert(JSON.stringify(error));
+                        })
                     .then(() => {
                         $("#container-slider").removeClass('hidden');
                     });
@@ -49,15 +49,15 @@ var router = (() => {
 
                 var data = everlive.data('contacts');
                 data.get()
-                    .then(function (data) {
-                        let contacts = data.result[0];
-                        Promise.all([contacts, tl.loadTemplate('contactForm')])
-                            .then(([contacts, template]) => $('#container').html(template(contacts)))
-                            .catch(console.log);
-                    },
-                    function (error) {
-                        alert(JSON.stringify(error));
-                    });
+                    .then(function(data) {
+                            let contacts = data.result[0];
+                            Promise.all([contacts, tl.loadTemplate('contactForm')])
+                                .then(([contacts, template]) => $('#container').html(template(contacts)))
+                                .catch(console.log);
+                        },
+                        function(error) {
+                            alert(JSON.stringify(error));
+                        });
             })
             .on('register', () => {
                 //debugger;
@@ -70,16 +70,52 @@ var router = (() => {
             })
             .on('details/:id', (params) => {
                 comicBook.getById(params.id)
-                    .then(function (comics) {
+                    .then(function(comics) {
                         let data = comics.result;
                         Promise.all([data, tl.loadTemplate('details')])
                             .then(([data, template]) => $('#container').html(template(data)))
                             .catch(console.log);
-                    }, function (error) {
+                    }, function(error) {
                         alert(JSON.stringify(error));
                     })
                     .then(() => {
                         $("#container-slider").addClass('hidden');
+                    });
+            })
+            .on('marvel', () => {
+                var filter = new Everlive.Query();
+                filter.where().eq('Category', 'Marvel');
+
+                comicBook.get(filter)
+                    .then(function(data) {
+                            let books = data;
+                            Promise.all([books, tl.loadTemplate('comicBooksPreview')])
+                                .then(([books, template]) => $('#container').html(template(books)))
+                                .catch(console.log);
+                        },
+                        function(error) {
+                            alert(JSON.stringify(error));
+                        })
+                    .then(() => {
+                        $("#container-slider").removeClass('hidden');
+                    });
+            })
+            .on('dc', () => {
+                var filter = new Everlive.Query();
+                filter.where().eq('Category', 'DC Comics');
+
+                comicBook.get(filter)
+                    .then(function(data) {
+                            let books = data;
+                            Promise.all([books, tl.loadTemplate('comicBooksPreview')])
+                                .then(([books, template]) => $('#container').html(template(books)))
+                                .catch(console.log);
+                        },
+                        function(error) {
+                            alert(JSON.stringify(error));
+                        })
+                    .then(() => {
+                        $("#container-slider").removeClass('hidden');
                     });
             })
             .on('hot', () => {
@@ -94,8 +130,8 @@ var router = (() => {
             })
             .on('hot/read', () => {
                 Promise.all([tl.loadTemplate('gallery')])
-                    .then(([template])=> {
-                        $("#comic-book-holder").addClass('hidden');                        
+                    .then(([template]) => {
+                        $("#comic-book-holder").addClass('hidden');
                         $("#container-slider").addClass('hidden');
                         $('#container').html(template);
                     })
