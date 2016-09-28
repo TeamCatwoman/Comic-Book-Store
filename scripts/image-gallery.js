@@ -30,7 +30,7 @@
       if (!this.options.useBootstrapModal || factoryInterface) {
         return factory.call(this, obj, callback, factoryInterface)
       }
-      var that = this
+      var that = this;
       var modalTemplate = this.container.children('.modal')
       var modal = modalTemplate.clone().show().on('click', function (event) {
         // Close modal if click is outside of modal-content:
