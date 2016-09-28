@@ -118,6 +118,9 @@ var router = (() => {
                         $("#container-slider").removeClass('hidden');
                     });
             })
+            .on('favorites', () => {
+
+            })
             .on('hot', () => {
                 Promise.all([dataServer.get.book(), tl.loadTemplate('online')])
                     .then(([data, template]) => {

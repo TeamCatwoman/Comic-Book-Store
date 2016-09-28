@@ -113,6 +113,7 @@ $(() => { // on document ready
             loginForm.removeClass('hidden');
             registerForm.removeClass('hidden');
             logoutForm.addClass('hidden');
+            favorites.addClass('hidden');
             noty({
                 theme: 'relax',
                 text: 'Successfully logged out!',
@@ -139,13 +140,13 @@ $(() => { // on document ready
         let id = $(this).attr("data-id"),
             userId,
             listOfComics;
-        debugger;
+            
         Everlive.$.Users.currentUser()
             .then(function(data) {
                 debugger;
                 userId = data.result.Id;
-                id += data.result.FavComics + '|';
-                Everlive.$.Users.updateSingle({ 'Id': userId, 'FavComics': id },
+                listOfComics = data.result.FavComics + '|' + id;
+                Everlive.$.Users.updateSingle({ 'Id': userId, 'FavComics': listOfComics },
                     function(data) {
                         alert(JSON.stringify(data));
                     },
