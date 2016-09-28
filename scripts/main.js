@@ -6,7 +6,7 @@ const USERNAME_STORAGE_KEY = 'username-key',
     AUTH_KEY_STORAGE_KEY = 'auth-key-key';
 new Everlive('co50xbssvfni5o0s');
 
-$(() => { // on document ready
+$(() => { // on document ready   
     const loginForm = $('#login'),
         logoutForm = $('#logout'),
         registerForm = $('#btn-register-form'),
@@ -16,21 +16,21 @@ $(() => { // on document ready
 
     router.init();
 
-    $('#root').on('click', '#btn-register-form', function (ev) {
+    $('#root').on('click', '#btn-register-form', function(ev) {
         $('#root').addClass('blurred');
         $('#root').addClass('disabled-background');
     });
-    $('#body').on('click', '#btn-register', function (ev) {
+    $('#body').on('click', '#btn-register', function(ev) {
         $('#root').removeClass('blurred');
         $('#root').removeClass('disabled-background');
     });
-    $('#body').on('click', '#btn-cancel', function (ev) {
+    $('#body').on('click', '#btn-cancel', function(ev) {
         $('#root').removeClass('blurred');
         $('#root').removeClass('disabled-background');
     });
 
     //register form
-    $('#container').on('click', '#btn-register', function (ev) {
+    $('#container').on('click', '#btn-register', function(ev) {
         let username = $("#username-input").val(),
             email = $("#email-input").val(),
             age = $("#age-input").val(),
@@ -44,19 +44,33 @@ $(() => { // on document ready
         };
 
         Everlive.$.Users.register(user.username, user.password, additionalInfo)
-            .then(function (data) {
-                alert(JSON.stringify(data));
-            }, function (error) {
-                alert(JSON.stringify(error));
+            .then(function(data) {
+                noty({
+                    theme: 'relax',
+                    text: 'Successfully register!',
+                    type: 'success',
+                    timeout: 2000,
+                    closeWith: ['click']
+                });
+                //alert(JSON.stringify(data));
+            }, function(error) {
+                noty({
+                    theme: 'relax',
+                    text: "Unfortunately an error occurred: " + err.message,
+                    type: 'error',
+                    timeout: 3000,
+                    closeWith: ['click']
+                });
+                // alert(JSON.stringify(error));
             });
     });
     //end register form
     //login 
-    $('#btn-login').on('click', function () {
+    $('#btn-login').on('click', function() {
         var username = $('#login-input').val();
         var password = $('#login-password').val();
         //debugger;
-        Everlive.$.Users.login(username, password, function (data) {
+        Everlive.$.Users.login(username, password, function(data) {
             var accessToken = data.result.access_token;
             localStorage.setItem(USERNAME_STORAGE_KEY, username);
             localStorage.setItem(AUTH_KEY_STORAGE_KEY, accessToken);
@@ -64,28 +78,55 @@ $(() => { // on document ready
             loginForm.addClass('hidden');
             registerForm.addClass('hidden');
             logoutForm.removeClass('hidden');
-            alert("Successfully logged the user in! Received access token: " + accessToken);
-            console.log(data);
-            console.log("Logged in");
-        }, function (err) {
-            alert("Unfortunately an error occurred: " + err.message);
+            noty({
+                theme: 'relax',
+                text: 'Successfully log in!',
+                type: 'success',
+                timeout: 2000,
+                closeWith: ['click']
+            });
+            //alert("Successfully logged the user in! Received access token: " + accessToken);
+            //console.log(data);
+            //console.log("Logged in");
+        }, function(err) {
+            noty({
+                theme: 'relax',
+                text: "Unfortunately an error occurred: " + err.message,
+                type: 'error',
+                timeout: 3000,
+                closeWith: ['click']
+            });
+            //alert("Unfortunately an error occurred: " + err.message);
         });
-
 
     });
     //login
     //logout
-    $('#btn-logout').on('click', function () {
-        Everlive.$.Users.logout(function () {
+    $('#btn-logout').on('click', function() {
+        Everlive.$.Users.logout(function() {
             localStorage.removeItem(AUTH_KEY_STORAGE_KEY);
             localStorage.removeItem(USERNAME_STORAGE_KEY);
             usernameSpan.text('');
             loginForm.removeClass('hidden');
             registerForm.removeClass('hidden');
             logoutForm.addClass('hidden');
-            alert("Logout successful!");
-        }, function (err) {
-            alert("Failed to logout: " + err.message);
+            noty({
+                theme: 'relax',
+                text: 'Successfully logged out!',
+                type: 'success',
+                timeout: 2000,
+                closeWith: ['click']
+            });
+            // alert("Logout successful!");
+        }, function(err) {
+            noty({
+                theme: 'relax',
+                text: "Failed to logout: " + err.message,
+                type: 'error',
+                timeout: 3000,
+                closeWith: ['click']
+            });
+            // alert("Failed to logout: " + err.message);
         });
     });
     //logout
