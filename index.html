@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Online comic store "Catwoman"</title>
+    <link rel="icon" href="./images/catwoman.png">
     <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="./css/homePageSlider.css" />
     <link rel="stylesheet" href="./css/style.css">
@@ -33,11 +34,13 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                        <a class="navbar-brand" href="#home"><em>Catwoman </em>Online Store</a>
                     </div>
                     <div id="navbar" class="navbar-collapse collapse">
                         <ul class="nav navbar-nav nav-pills">
-                            <li><a href="#home">Home</a></li>
+                            <li>
+                                <a class="navbar-brand logo" href="#home"></a>
+                            </li>
+                            <!--<li><a href="#home">Home</a></li>-->
                             <li id="comics"><a href="#comic">Comics</a></li>
                             <li class="dropdown" id="nav-dropdown">
                                 <a href="#categories" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories  <span class="caret"></span></a>
@@ -48,14 +51,15 @@
                             </li>
                             <li><a href="#hot" class="status hot">HOT</a></li>
                             <li><a href="#contact">Contact</a></li>
+                            <li class="hidden" id="favorites"><a href="#favorites">My favorites</a></li>
                         </ul>
-                        <form id="nav-login-form" class="navbar-collapse collapse navbar-form">
+                        <form id="nav-login-form" class="navbar-collapse collapse navbar-form pull-right">
                             <div id="login" class="form-group">
                                 <input id="login-input" type="text" class="form-control" size="15" placeholder="Username">
                                 <input id="login-password" type="password" class="form-control" size="12" placeholder="Password">
                                 <a href="#log-in" id="btn-login" type="submit" class="btn btn-default " class="navbar-link">Login</a>
                             </div>
-                            <div id="logout" class="form-group hidden">
+                            <div id="logout" class="form-group hidden pull-right">
                                 Hello, <a href="#log-out" class="navbar-link"><strong id="span-username"></strong></a>
                                 <a id="btn-logout" type="submit" class="btn btn-default">Logout</a>
                             </div>

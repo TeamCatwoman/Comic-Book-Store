@@ -10,7 +10,8 @@ $(() => { // on document ready
     const loginForm = $('#login'),
         logoutForm = $('#logout'),
         registerForm = $('#btn-register-form'),
-        usernameSpan = $('#span-username');
+        usernameSpan = $('#span-username'),
+        favorites = $('#favorites');
     // start navigo
     //end navigo
 
@@ -40,7 +41,8 @@ $(() => { // on document ready
 
         let additionalInfo = {
             Email: user.email,
-            Age: user.age
+            Age: user.age,
+            ComicBooks: []
         };
 
         Everlive.$.Users.register(user.username, user.password, additionalInfo)
@@ -78,6 +80,7 @@ $(() => { // on document ready
             loginForm.addClass('hidden');
             registerForm.addClass('hidden');
             logoutForm.removeClass('hidden');
+            favorites.removeClass('hidden');
             noty({
                 theme: 'relax',
                 text: 'Successfully log in!',
@@ -130,4 +133,34 @@ $(() => { // on document ready
         });
     });
     //logout
+
+    //Add to favorites
+    $('#container').on('click', '#add-favorite', function(ev) {
+        let id = $(this).attr("data-id"),
+            userId,
+            listOfComics;
+        debugger;
+        Everlive.$.Users.currentUser()
+            .then(function(data) {
+                debugger;
+                userId = data.result.Id;
+                id += data.result.FavComics + '|';
+                Everlive.$.Users.updateSingle({ 'Id': userId, 'FavComics': id },
+                    function(data) {
+                        alert(JSON.stringify(data));
+                    },
+                    function(error) {
+                        alert(JSON.stringify(error));
+                    });
+            }, function(error) {
+                noty({
+                    theme: 'relax',
+                    text: "You are not logged in: " + err.message,
+                    type: 'error',
+                    timeout: 3000,
+                    closeWith: ['click']
+                });
+                // alert(JSON.stringify(error));
+            });
+    });
 });
