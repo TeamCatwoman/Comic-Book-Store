@@ -1,10 +1,12 @@
 var dataServer = (function () {
     const kinvey_APP_ID = 'kid_B1uRP-BT',
         kinvey_APP_SECRET = 'f77256583e1147ff8e2d6edd6e2971f3',
-        kinvey_MASTER_SECRET='84b14246f57a46fea8274487aad60f05',
+        kinvey_MASTER_SECRET = '84b14246f57a46fea8274487aad60f05',
         kinvey_URL = 'https://baas.kinvey.com/',
         USERNAME_STORAGE_KEY = 'username-key',
-        AUTH_KEY_STORAGE_KEY = 'auth-key-key';
+        AUTH_KEY_STORAGE_KEY = 'auth-key-key',
+        APP_ID = 'co50xbssvfni5o0s',
+        ACCESS_TOKEN = 'v0yhnv1ybqbskxn24rt6qbu3fmi3whmz';
 
     // start users
     function userRegister(user) {
@@ -89,6 +91,31 @@ var dataServer = (function () {
     }
     getBook();
     //end get book
+    //gallery images
+    function getImages() {
+        var images = new Promise(function (resolve, reject) {
+            var sortExp = { "Filename": 1 };
+            $.ajax({
+                type: "GET",
+                url: `http://api.everlive.com/v1/${APP_ID}/Files`,
+                headers: {
+                    "Authorization": ACCESS_TOKEN,
+                    "X-Everlive-Sort": JSON.stringify(sortExp)
+                },
+                contentType: "application/json",
+                success: function (data) {
+                    resolve(data);
+                    console.log(JSON.stringify(data));
+                },
+                error: function (error) {
+                    reject(error);
+                    console.log(JSON.stringify(error));
+                }
+            });
+        });
+        return images;
+    }
+    //end gallery images
     return {
         users: {
             register: userRegister,
@@ -98,6 +125,9 @@ var dataServer = (function () {
         },
         get: {
             book: getBook
+        },
+        images: {
+            get: getImages
         }
     };
 })();

@@ -88,7 +88,10 @@ var router = (() => {
                     })
                     .catch(console.log);
             })
+<<<<<<< HEAD
             //.on(() => { router.navigate("/home") })
+=======
+>>>>>>> origin/master
             .resolve();
     }
     return {
