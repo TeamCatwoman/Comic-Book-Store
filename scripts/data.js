@@ -1,27 +1,74 @@
 let data = (function() {
-    let everlive = new Everlive('co50xbssvfni5o0s');
-    let comicBook = everlive.data('ComicBook');
-    // console.log(comicBook);
+    const APP_ID = 'co50xbssvfni5o0s',
+        ACCESS_TOKEN = 'v0yhnv1ybqbskxn24rt6qbu3fmi3whmz';
+    // let everlive = new Everlive('co50xbssvfni5o0s');
+    // let comicBook = everlive.data('ComicBook');
 
-    let getFavoriteComics = function(idComics) {
-        let favorites = [];
-
-        idComics.forEach((id) => {
-            comicBook.getById(id)
-                .then((currentComicBook) => {
-                    favorites.push({ currentComicBook });
-                });
+    function getById(typeName, id) {
+        return new Promise((resolve, reject) => {
+            let url = `http://api.everlive.com/v1/${APP_ID}/${typeName}/${id}`;
+            $.ajax({
+                url: url,
+                type: "GET",
+                headers: {
+                    "Authorization": ACCESS_TOKEN
+                },
+                success: function(data) {
+                    resolve(data);
+                },
+                error: function(error) {
+                    reject(error);
+                }
+            });
         });
+    }
 
-        console.log(favorites);
+    function get(typeName) {
+        return new Promise((resolve, reject) => {
+            let url = `http://api.everlive.com/v1/${APP_ID}/${typeName}`;
+            $.ajax({
+                url: url,
+                type: "GET",
+                headers: {
+                    "Authorization": ACCESS_TOKEN
+                },
+                success: function(data) {
+                    resolve(data);
+                },
+                error: function(error) {
+                    reject(error);
+                }
+            });
+        });
+    }
 
-        return favorites;
-    };
+    function getByCategory(typeName, category) {
+        let filter = { 'Category': category };
+        let url = `http://api.everlive.com/v1/${APP_ID}/${typeName}`;
+
+        return new Promise((resolve, reject) => {
+            $.ajax({
+                url: url,
+                type: "GET",
+                headers: {
+                    "Authorization": ACCESS_TOKEN,
+                    "X-Everlive-Filter": JSON.stringify(filter)
+                },
+                success: function(data) {
+                    resolve(data);
+                },
+                error: function(error) {
+                    reject(error);
+                }
+            });
+        });
+    }
 
     return {
-        getFavoriteComics
-    };
-
+        get,
+        getById,
+        getByCategory
+    }
 })();
 
 export { data };

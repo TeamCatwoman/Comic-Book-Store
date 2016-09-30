@@ -1,6 +1,7 @@
 import { dataServer } from './dataServer.js';
 import { templateLoader as tl } from './template-loader.js';
 import { data as comicData } from './data.js';
+import { controller } from './controller.js';
 
 let everlive = new Everlive('co50xbssvfni5o0s');
 let comicBook = everlive.data('ComicBook');
@@ -21,21 +22,7 @@ var router = (() => {
                     })
                     .catch(console.log);
             })
-            .on('comic', () => {
-                comicBook.get()
-                    .then(function(data) {
-                            let books = data;
-                            Promise.all([books, tl.loadTemplate('comicBooksPreview')])
-                                .then(([books, template]) => $('#container').html(template(books)))
-                                .catch(console.log);
-                        },
-                        function(error) {
-                            alert(JSON.stringify(error));
-                        })
-                    .then(() => {
-                        $("#container-slider").removeClass('hidden');
-                    });
-            })
+            .on('comic', controller.comics)
             .on('about', () => {
                 // Promise.all(['get the data', tl.loadTemplate('load the template by name')])
                 //     .then(([data, template])=> $('#atach to DOM').html(template(data)))
@@ -70,37 +57,27 @@ var router = (() => {
                     .catch(console.log);
             })
             .on('details/:id', (params) => {
-                comicBook.getById(params.id)
-                    .then(function(comics) {
-                        let data = comics.result;
-                        Promise.all([data, tl.loadTemplate('details')])
-                            .then(([data, template]) => $('#container').html(template(data)))
-                            .catch(console.log);
-                    }, function(error) {
-                        alert(JSON.stringify(error));
-                    })
-                    .then(() => {
-                        $("#container-slider").addClass('hidden');
-                    });
+                controller.detailedComicBook(params.id);
             })
-            .on('marvel', () => {
-                var filter = new Everlive.Query();
-                filter.where().eq('Category', 'Marvel');
+            .on('marvel', //controller.categories('Marvel') 
+                () => {
+                    var filter = new Everlive.Query();
+                    filter.where().eq('Category', 'Marvel');
 
-                comicBook.get(filter)
-                    .then(function(data) {
-                            let books = data;
-                            Promise.all([books, tl.loadTemplate('comicBooksPreview')])
-                                .then(([books, template]) => $('#container').html(template(books)))
-                                .catch(console.log);
-                        },
-                        function(error) {
-                            alert(JSON.stringify(error));
-                        })
-                    .then(() => {
-                        $("#container-slider").removeClass('hidden');
-                    });
-            })
+                    comicBook.get(filter)
+                        .then(function(data) {
+                                let books = data;
+                                Promise.all([books, tl.loadTemplate('comicBooksPreview')])
+                                    .then(([books, template]) => $('#container').html(template(books)))
+                                    .catch(console.log);
+                            },
+                            function(error) {
+                                alert(JSON.stringify(error));
+                            })
+                        .then(() => {
+                            $("#container-slider").removeClass('hidden');
+                        });
+                })
             .on('dc', () => {
                 var filter = new Everlive.Query();
                 filter.where().eq('Category', 'DC Comics');
