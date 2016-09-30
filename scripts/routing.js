@@ -136,7 +136,8 @@ var router = (() => {
                         $('#container').html(template);
                     })
                     .catch(console.log);
-            }).resolve();
+            })
+            .resolve();
     }
     return {
         init

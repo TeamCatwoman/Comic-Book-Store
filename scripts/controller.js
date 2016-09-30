@@ -20,7 +20,7 @@ let controller = {
     detailedComicBook: (id) => {
         data.getById('ComicBook', id)
             .then(function(comics) {
-                debugger;
+                //debugger;
                 let data = comics.Result;
                 Promise.all([data, tl.loadTemplate('details')])
                     .then(([data, template]) => $('#container').html(template(data)))
@@ -33,7 +33,7 @@ let controller = {
             });
     },
     categories: (category) => {
-        debugger;
+        //debugger;
         data.getByCategory("ComicBook", category)
             .then((data) => {
                 Promise.all([data, tl.loadTemplate('comicBooksPreview')])
