@@ -1,6 +1,7 @@
 import { router } from './routing.js';
-import { register } from './signInUser.js';
-import { User } from './user.js';
+import { User } from './models/user.js';
+import { userData } from './data/userData.js';
+import { data as comicData } from './data/data.js';
 
 const USERNAME_STORAGE_KEY = 'username-key',
     AUTH_KEY_STORAGE_KEY = 'auth-key-key';
@@ -36,13 +37,11 @@ $(() => { // on document ready
             email = $("#email-input").val(),
             age = $("#age-input").val(),
             password = $("#password-input").val();
-        //debugger;
         let user = new User(username, age, email, password);
 
         let additionalInfo = {
             Email: user.email,
-            Age: user.age,
-            ComicBooks: []
+            Age: user.age
         };
 
         Everlive.$.Users.register(user.username, user.password, additionalInfo)
@@ -54,7 +53,6 @@ $(() => { // on document ready
                     timeout: 2000,
                     closeWith: ['click']
                 });
-                //alert(JSON.stringify(data));
             }, function(error) {
                 noty({
                     theme: 'relax',
@@ -63,7 +61,6 @@ $(() => { // on document ready
                     timeout: 3000,
                     closeWith: ['click']
                 });
-                // alert(JSON.stringify(error));
             });
     });
     //end register form
@@ -71,11 +68,12 @@ $(() => { // on document ready
     $('#btn-login').on('click', function() {
         var username = $('#login-input').val();
         var password = $('#login-password').val();
-        //debugger;
+
         Everlive.$.Users.login(username, password, function(data) {
             var accessToken = data.result.access_token;
             localStorage.setItem(USERNAME_STORAGE_KEY, username);
             localStorage.setItem(AUTH_KEY_STORAGE_KEY, accessToken);
+            localStorage.setItem('current-id', data.result.principal_id);
             usernameSpan.text(username);
             loginForm.addClass('hidden');
             registerForm.addClass('hidden');
@@ -88,9 +86,6 @@ $(() => { // on document ready
                 timeout: 2000,
                 closeWith: ['click']
             });
-            //alert("Successfully logged the user in! Received access token: " + accessToken);
-            //console.log(data);
-            //console.log("Logged in");
         }, function(err) {
             noty({
                 theme: 'relax',
@@ -99,7 +94,6 @@ $(() => { // on document ready
                 timeout: 3000,
                 closeWith: ['click']
             });
-            //alert("Unfortunately an error occurred: " + err.message);
         });
 
     });
@@ -109,6 +103,7 @@ $(() => { // on document ready
         Everlive.$.Users.logout(function() {
             localStorage.removeItem(AUTH_KEY_STORAGE_KEY);
             localStorage.removeItem(USERNAME_STORAGE_KEY);
+            localStorage.removeItem('current-id');
             usernameSpan.text('');
             loginForm.removeClass('hidden');
             registerForm.removeClass('hidden');
@@ -121,7 +116,6 @@ $(() => { // on document ready
                 timeout: 2000,
                 closeWith: ['click']
             });
-            // alert("Logout successful!");
         }, function(err) {
             noty({
                 theme: 'relax',
@@ -130,12 +124,10 @@ $(() => { // on document ready
                 timeout: 3000,
                 closeWith: ['click']
             });
-            // alert("Failed to logout: " + err.message);
         });
     });
     //logout
 
-    //Add to favorites
     $('#container').on('click', '#add-favorite', function(ev) {
         let id = $(this).attr("data-id"),
             userId;
@@ -143,23 +135,22 @@ $(() => { // on document ready
         let everlive = new Everlive('co50xbssvfni5o0s');
         let comicBook = everlive.data('ComicBook');
 
-        Everlive.$.Users.currentUser()
-            .then(function(data) {
-                if (data.result === null) {
-                    noty({
-                        theme: 'relax',
-                        text: "You are not logged in",
-                        type: 'error',
-                        timeout: 3000,
-                        closeWith: ['click']
-                    });
-                    return;
-                }
+        userId = localStorage.getItem('current-id');
+        if (userId === null) {
+            noty({
+                theme: 'relax',
+                text: "You are not logged in",
+                type: 'error',
+                timeout: 3000,
+                closeWith: ['click']
+            });
+            return;
+        }
 
-                userId = data.result.Id;
-
-                comicBook.getById(id)
-                    .then(function(comic) {
+        userData.getById(userId)
+            .then((data) => {
+                comicData.getById("ComicBook", id)
+                    .then((comic) => {
                         var attributes = {
                             "$push": {
                                 "Favourite": comic
@@ -181,15 +172,15 @@ $(() => { // on document ready
                         }, function(error) {
                             console.log(JSON.stringify(error));
                         });
+                    }, function(error) {
+                        noty({
+                            theme: 'relax',
+                            text: "You are not logged in: " + error.message,
+                            type: 'error',
+                            timeout: 3000,
+                            closeWith: ['click']
+                        });
                     });
-            }, function(error) {
-                noty({
-                    theme: 'relax',
-                    text: "You are not logged in: " + error.message,
-                    type: 'error',
-                    timeout: 3000,
-                    closeWith: ['click']
-                });
             });
     });
 });
