@@ -138,30 +138,58 @@ $(() => { // on document ready
     //Add to favorites
     $('#container').on('click', '#add-favorite', function(ev) {
         let id = $(this).attr("data-id"),
-            userId,
-            listOfComics;
-            
+            userId;
+
+        let everlive = new Everlive('co50xbssvfni5o0s');
+        let comicBook = everlive.data('ComicBook');
+
         Everlive.$.Users.currentUser()
             .then(function(data) {
-                debugger;
+                if (data.result === null) {
+                    noty({
+                        theme: 'relax',
+                        text: "You are not logged in",
+                        type: 'error',
+                        timeout: 3000,
+                        closeWith: ['click']
+                    });
+                    return;
+                }
+
                 userId = data.result.Id;
-                listOfComics = data.result.FavComics + '|' + id;
-                Everlive.$.Users.updateSingle({ 'Id': userId, 'FavComics': listOfComics },
-                    function(data) {
-                        alert(JSON.stringify(data));
-                    },
-                    function(error) {
-                        alert(JSON.stringify(error));
+
+                comicBook.getById(id)
+                    .then(function(comic) {
+                        var attributes = {
+                            "$push": {
+                                "Favourite": comic
+                            }
+                        };
+
+                        var filter = {
+                            'Id': userId
+                        };
+
+                        Everlive.$.Users.rawUpdate(attributes, filter, function(data) {
+                            noty({
+                                theme: 'relax',
+                                text: 'Successfully added to favorites!',
+                                type: 'success',
+                                timeout: 1000,
+                                closeWith: ['click']
+                            });
+                        }, function(error) {
+                            console.log(JSON.stringify(error));
+                        });
                     });
             }, function(error) {
                 noty({
                     theme: 'relax',
-                    text: "You are not logged in: " + err.message,
+                    text: "You are not logged in: " + error.message,
                     type: 'error',
                     timeout: 3000,
                     closeWith: ['click']
                 });
-                // alert(JSON.stringify(error));
             });
     });
 });

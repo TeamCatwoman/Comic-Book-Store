@@ -1,9 +1,10 @@
 import { dataServer } from './dataServer.js';
 import { templateLoader as tl } from './template-loader.js';
-
+import { data as comicData } from './data.js';
 
 let everlive = new Everlive('co50xbssvfni5o0s');
 let comicBook = everlive.data('ComicBook');
+new Everlive('co50xbssvfni5o0s');
 
 var router = (() => {
     let navigo;
@@ -119,7 +120,26 @@ var router = (() => {
                     });
             })
             .on('favorites', () => {
-
+                Everlive.$.Users.currentUser()
+                    .then((properties) => {
+                        return new Promise((resolve, reject) => {
+                            let favoriteComics = properties.result.Favourite;
+                            // console.log(favoriteComics);
+                            let favs = {
+                                "count": 0,
+                                "result": favoriteComics
+                            };
+                            resolve(favs);
+                        });
+                    })
+                    .then(function(favs) {
+                        Promise.all([favs, tl.loadTemplate('favoriteComics')])
+                            .then(([favs, template]) => $('#container').html(template(favs)))
+                            .catch(console.log);
+                    })
+                    .then(() => {
+                        $("#container-slider").addClass('hidden');
+                    });
             })
             .on('hot', () => {
                 Promise.all([dataServer.get.book(), tl.loadTemplate('online')])

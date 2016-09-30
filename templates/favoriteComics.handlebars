@@ -1,0 +1,12 @@
+<div id='mini-book-main'>
+    {{#result}}
+     <div class="col-md-4 col-sm-4 col-xs-6 item center-block">
+        <div class="comic-info">
+            <div class="featurette-heading fixed-title">{{result.Title}}</div>
+            <h6>Author: {{result.Author}}</h6>
+            <img src="{{result.ImageSrc}}" class="comic-img" alt="{{result.Title}}">
+            <p><a class="btn btn-success" href="#details/{{result.Id}}" role="button">View details &raquo;</a></p>
+        </div>
+    </div>  
+    {{/result}}
+</div>
