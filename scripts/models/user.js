@@ -1,3 +1,5 @@
+import { validator } from './validator.js';
+
 let User = (function() {
     class User {
         constructor(username, age, email, password) {
@@ -12,6 +14,8 @@ let User = (function() {
         }
 
         set username(value) {
+            validator.validateIfUndefinedOrNull(value, "username");
+            validator.validateTypeOf(value, "username", 'string');
             this._username = value;
         }
 
@@ -20,6 +24,8 @@ let User = (function() {
         }
 
         set age(value) {
+            validator.validateIfUndefinedOrNull(value, 'age');
+            validator.validateTypeOf(value, 'age', 'number');
             this._age = value;
         }
 
@@ -28,6 +34,8 @@ let User = (function() {
         }
 
         set email(value) {
+            validator.validateIfUndefinedOrNull(value, "email");
+            validator.validateTypeOf(value, "email", 'string');
             this._email = value;
         }
 

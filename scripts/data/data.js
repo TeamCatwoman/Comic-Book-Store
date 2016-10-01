@@ -1,72 +1,35 @@
+import { requester } from '../requester.js';
+
+const APP_ID = 'co50xbssvfni5o0s',
+    ACCESS_TOKEN = 'v0yhnv1ybqbskxn24rt6qbu3fmi3whmz';
+
 let data = (function() {
-    const APP_ID = 'co50xbssvfni5o0s',
-        ACCESS_TOKEN = 'v0yhnv1ybqbskxn24rt6qbu3fmi3whmz';
-
-    function getById(typeName, id) {
-        return new Promise((resolve, reject) => {
-            let url = `http://api.everlive.com/v1/${APP_ID}/${typeName}/${id}`;
-            $.ajax({
-                url: url,
-                type: "GET",
-                headers: {
-                    "Authorization": ACCESS_TOKEN
-                },
-                success: function(data) {
-                    resolve(data);
-                },
-                error: function(error) {
-                    reject(error);
-                }
-            });
-        });
+    function getComicBooks() {
+        return requester.get(`http://api.everlive.com/v1/${APP_ID}/ComicBook`);
     }
 
-    function get(typeName) {
-        return new Promise((resolve, reject) => {
-            let url = `http://api.everlive.com/v1/${APP_ID}/${typeName}`;
-            $.ajax({
-                url: url,
-                type: "GET",
-                headers: {
-                    "Authorization": ACCESS_TOKEN
-                },
-                success: function(data) {
-                    resolve(data);
-                },
-                error: function(error) {
-                    reject(error);
-                }
-            });
-        });
+    function getComicBookById(id) {
+        return requester.get(`http://api.everlive.com/v1/${APP_ID}/ComicBook/${id}`);
     }
 
-    function getByCategory(typeName, category) {
-        let filter = { 'Category': category };
-        return new Promise((resolve, reject) => {
-            let url = `http://api.everlive.com/v1/${APP_ID}/${typeName}`;
-            $.ajax({
-                url: url,
-                type: "GET",
-                headers: {
-                    "Authorization": ACCESS_TOKEN,
-                    "X-Everlive-Filter": JSON.stringify(filter)
-                },
-                success: function(data) {
-                   // debugger;
-                    resolve(data);
-                },
-                error: function(error) {
-                   // debugger;
-                    reject(error);
-                }
-            });
-        });
+    function homePage() {
+        return requester.get(`http://api.everlive.com/v1/${APP_ID}/HeroHistory`);
+    }
+
+    function user(id) {
+        return requester.get(`http://api.everlive.com/v1/${APP_ID}/Users/${id}`);
+    }
+
+    function contacts() {
+        return requester.get(`http://api.everlive.com/v1/${APP_ID}/contacts`);
     }
 
     return {
-        get,
-        getById,
-        getByCategory
+        getComicBooks,
+        getComicBookById,
+        homePage,
+        user,
+        contacts
     };
 })();
 

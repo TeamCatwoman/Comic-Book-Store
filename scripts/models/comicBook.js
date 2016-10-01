@@ -1,3 +1,5 @@
+import { validator } from './validator.js';
+
 let ComicBook = (function() {
     class ComicBook {
         constructor(title, author, publisher, year, price, category, description, imageSrc, id) {
@@ -17,6 +19,8 @@ let ComicBook = (function() {
         }
 
         set title(value) {
+            validator.validateIfUndefinedOrNull(value, "title");
+            validator.validateTypeOf(value, "title", "string");
             this._title = value;
         }
 
@@ -25,6 +29,8 @@ let ComicBook = (function() {
         }
 
         set author(value) {
+            validator.validateIfUndefinedOrNull(value, "author");
+            validator.validateTypeOf(value, "author", "string");
             this._author = value;
         }
 
@@ -33,6 +39,8 @@ let ComicBook = (function() {
         }
 
         set publisher(value) {
+            validator.validateIfUndefinedOrNull(value, "publisher");
+            validator.validateTypeOf(value, "publisher", "string");
             this._publisher = value;
         }
 
@@ -41,7 +49,19 @@ let ComicBook = (function() {
         }
 
         set year(value) {
+            validator.validateIfUndefinedOrNull(value, "year");
+            validator.validateTypeOf(value, "year", "number");
             this._year = value;
+        }
+
+        get price() {
+            return this._price;
+        }
+
+        set price(value) {
+            validator.validateIfUndefinedOrNull(value, "price");
+            validator.validateTypeOf(value, "price", "number");
+            this._price = value;
         }
 
         get category() {
@@ -49,6 +69,8 @@ let ComicBook = (function() {
         }
 
         set category(value) {
+            validator.validateIfUndefinedOrNull(value, "category");
+            validator.validateTypeOf(value, "category", "string");
             this._category = value;
         }
 
@@ -57,6 +79,8 @@ let ComicBook = (function() {
         }
 
         set description(value) {
+            validator.validateIfUndefinedOrNull(value, "description");
+            validator.validateTypeOf(value, "description", "string");
             this._description = value;
         }
 
@@ -65,6 +89,8 @@ let ComicBook = (function() {
         }
 
         set imageSrc(value) {
+            validator.validateIfUndefinedOrNull(value, "imageSrc");
+            validator.validateTypeOf(value, "imageSrc", "string");
             this._imageSrc = value;
         }
 
@@ -73,6 +99,8 @@ let ComicBook = (function() {
         }
 
         set id(value) {
+            validator.validateIfUndefinedOrNull(value, "id");
+            validator.validateTypeOf(value, "id", "string");
             this._id = value;
         }
     }

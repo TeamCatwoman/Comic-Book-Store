@@ -1,4 +1,4 @@
-var validation = (function () {
+var validation = (function() {
     function validateEmail(email) {
         let letters = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
         if (!email.match(letters)) {
@@ -12,6 +12,7 @@ var validation = (function () {
             return true;
         }
     }
+
     function validatePassword(password) {
         let letters = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
 
@@ -26,7 +27,9 @@ var validation = (function () {
             return true;
         }
 
-    } function validateUsername(username) {
+    }
+
+    function validateUsername(username) {
         let letters = /^[0-9a-zA-Z]+$/;
 
         if (!username.match(letters)) {
@@ -51,7 +54,9 @@ var validation = (function () {
             return true;
         }
 
-    } function validateAge(age) {
+    }
+
+    function validateAge(age) {
         if (age < 0 || age > 120 || !age) {
             noty({
                 theme: 'relax',
@@ -63,6 +68,7 @@ var validation = (function () {
             return true;
         }
     }
+
     function validateMessage(message) {
         let letters = /^[0-9a-zA-Z]+$/;
 
@@ -84,5 +90,5 @@ var validation = (function () {
         age: validateAge,
         message: validateMessage
     };
-} ());
+}());
 export { validation };

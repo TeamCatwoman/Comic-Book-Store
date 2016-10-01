@@ -12,5 +12,10 @@
     "jquery": "^3.1.0",
     "everlive": "^1.7.2",
     "noty": "^2.3.8"
+  },
+  "devDependencies": {
+    "mocha": "^3.1.0",
+    "chai": "^3.5.0",
+    "sinon": "^1.17.5"
   }
 }

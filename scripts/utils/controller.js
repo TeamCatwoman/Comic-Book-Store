@@ -7,7 +7,7 @@ import { HeroHistory } from '../models/heroHistory.js';
 let Controller = (function() {
     class Controller {
         loadHomeTemplate() {
-            data.get('HeroHistory')
+            data.homePage()
                 .then((histories) => {
                     return new Promise((resolve, reject) => {
                         let listOfHistories = [];
@@ -40,7 +40,7 @@ let Controller = (function() {
         }
 
         loadComicBooks() {
-            data.get('ComicBook')
+            data.getComicBooks()
                 .then((data) => {
 
                     Promise.all([data, tl.loadTemplate('comicBooksPreview')])
@@ -54,7 +54,7 @@ let Controller = (function() {
         }
 
         loadDetailedComicBook(id) {
-            data.getById('ComicBook', id)
+            data.getComicBookById(id)
                 .then(function(comics) {
                     let comic = new ComicBook(comics.Result.Title, comics.Result.Author, comics.Result.Publisher,
                         comics.Result.Year, comics.Result.Price, comics.Result.Category, comics.Result.Description,
@@ -96,7 +96,7 @@ let Controller = (function() {
 
         loadFavorites() {
             let id = localStorage.getItem('current-id');
-            userData.getById(id)
+            data.user(id)
                 .then((properties) => {
                     return new Promise((resolve, reject) => {
                         let favoriteComics = properties.Result.Favourite;
@@ -124,7 +124,7 @@ let Controller = (function() {
                 .then(() => {
                     $("#container-slider").addClass('hidden');
                 });
-            data.get("contacts")
+            data.contacts()
                 .then(function(data) {
                         let contacts = data.Result[0];
                         Promise.all([contacts, tl.loadTemplate('contactForm')])
