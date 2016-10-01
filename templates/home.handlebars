@@ -1,47 +1,24 @@
 <div class="container marketing">
-
-        <hr class="featurette-divider">
-
-        <div class="row featurette">
+    {{#result}}
+    <hr class="featurette-divider">
+    <div class="row featurette">
+        {{#if isRight}}
             <div class="col-md-7">
-                <h2 class="featurette-heading">The story of </a> <strong>Superman</strong>.</h2>
-                <p class="lead pre-scrollable row" >Superman is a fictional superhero appearing in American comic books published by DC Comics. The character was created by writer Jerry Siegel and artist Joe Shuster, high school students living in Cleveland, Ohio, in 1933. They sold Superman to Detective Comics, the future DC Comics, in 1938. Superman debuted in Action Comics #1 (cover-dated June 1938) and subsequently appeared in various radio serials, newspaper strips, television programs, films, and video games. With this success, Superman helped to create the superhero archetype and establish its primacy within the American comic book. The character is also referred to by such epithets as the Man of Steel, the Man of Tomorrow, and The Last Son of Krypton. The origin story of Superman relates that he was born Kal-El on the alien planet Krypton, before being rocketed to Earth as an infant by his scientist father Jor-El, moments before Krypton's destruction. Discovered and adopted by a Kansas farmer and his wife, the child is raised as Clark Kent and imbued with a strong moral compass. Very early on he started to display various superhuman abilities, which, upon reaching maturity, he resolved to use for the benefit of humanity through a secret "Superman" identity. Superman resides and operates in the fictional American city of Metropolis. As Clark Kent, he is a journalist for the Daily Planet, a Metropolis newspaper. Superman's love interest is generally Lois Lane, and his archenemy is supervillain Lex Luthor. He is typically a member of the Justice League and close ally of Batman and Wonder Woman. Like other characters in the DC Universe, several alternate versions of Superman have been depicted over the years. Superman's appearance is distinctive and iconic; he usually wears a blue costume with a red-and-yellow emblem on the chest, consisting of the letter S in a shield shape, and a red cape. This shield is used in many media to symbolize the character. Superman is widely considered an American cultural icon.He has fascinated scholars, with cultural theorists, commentators, and critics alike exploring the character's impact and role in the United States and worldwide. The character's ownership has often been the subject of dispute, with Siegel and Shuster twice suing for the return of rights. The character has been adapted extensively and portrayed in other forms of media as well, including films, television series, and video games. Several actors have portrayed Superman in motion pictures and TV series including Kirk Alyn, George Reeves, Christopher Reeve, Tom Welling, Brandon Routh and Henry Cavill.</p>
+                <h2 class="featurette-heading">The story of </a> <strong>{{hero}}</strong>.</h2>
+                <p class="lead pre-scrollable row" >{{history}}</p>
             </div>
             <div class="col-md-5">
-                <img src="./images/home/031.jpg"  class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+                <img src="{{image}}"  class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
             </div>
-        </div>
-
-        <hr class="featurette-divider">
-
-        <div class="row featurette">
+        {{else}}
             <div class="col-md-5">
-                <img src="./images/home/021.jpg"  class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+                <img src="{{image}}"  class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
             </div>
             <div class="col-md-7">
-                <h2 class="featurette-heading"> <strong> Batman</strong></h2>
-                <p class="lead pre-scrollable row" >
-                    Batman is a fictional superhero appearing in American comic books published by DC Comics. The character was created by artist Bob Kane and writer Bill Finger,[5][6] and first appeared in Detective Comics #27 (May 1939). Originally named the "Bat-Man", the character is also referred to by such epithets as the Caped Crusader, the Dark Knight, and the World's Greatest Detective.Batman's secret identity is Bruce Wayne, an American billionaire, playboy, philanthropist, and owner of Wayne Enterprises. After witnessing the murder of his parents Thomas Wayne and Martha Wayne as a child, he swore revenge on criminals, an oath tempered by a sense of justice. Wayne trains himself physically and intellectually and crafts a bat-inspired persona to fight crime.[8] Batman operates in the fictional Gotham City, with assistance from various supporting characters, including his butler Alfred, police commissioner Gordon, and vigilante allies such as Robin. Unlike most superheroes, Batman does not possess any superpowers; rather, he relies on his genius intellect, physical prowess, martial arts abilities, detective skills, science and technology, vast wealth, intimidation, and indomitable will. A large assortment of villains make up Batman's rogues gallery, including his archenemy, the Joker.Batman became popular soon after his introduction in 1939 and gained his own comic book title, Batman, the following year. As the decades went on, differing interpretations of the character emerged. The late 1960s Batman television series used a camp aesthetic, which continued to be associated with the character for years after the show ended. Various creators worked to return the character to his dark roots, culminating in 1986 with The Dark Knight Returns by Frank Miller. The success of Warner Bros.' live-action Batman feature films have helped maintain the public's interest in the character.An American cultural icon, Batman has been licensed and adapted into a variety of media, from radio to television and film, and appears on various merchandise sold all over the world, such as toys and video games. The character has also intrigued psychiatrists, with many trying to understand the character's psyche. In May 2011, Batman placed second on IGN's Top 100 Comic Book Heroes of All Time,[10] after Superman. Empire magazine listed him second in their 50 Greatest Comic Book Characters of All Time. Kevin Conroy, Bruce Greenwood, Peter Weller, and Jason O'Mara, among others, have provided the character's voice for animated adaptations. Batman has been portrayed in both film and television by Lewis Wilson, Robert Lowery, Adam West, Michael Keaton, Val Kilmer, George Clooney, Christian Bale, and Ben Affleck.
-                </p>
+                <h2 class="featurette-heading">The story of </a> <strong>{{hero}}</strong>.</h2>
+                <p class="lead pre-scrollable row" >{{history}}</p>
             </div>
+            {{/if}}
         </div>
-
-        <hr class="featurette-divider">
-
-        <div class="row featurette">
-            <div class="col-md-7">
-                <h2 class="featurette-heading"><strong> Hulk</strong></h2>
-                    <p class="lead pre-scrollable row" >
-                        "The Incredible Hulk" is a fictional superhero created by writer Stan Lee and artist Jack Kirby, who first appeared in the debut issue of the comic book The Incredible Hulk in May 1962 published by Marvel Comics. In his comic book appearances, the character is both the Hulk, a green-skinned, hulking and muscular humanoid possessing a vast degree of physical strength, and his alter ego Bruce Banner, a physically weak, socially withdrawn, and emotionally reserved physicist, the two existing as personalities independent and resenting of the other. Following his accidental exposure to gamma radiation during the detonation of an experimental bomb, Banner is physically transformed into the Hulk when subjected to emotional stress, at or against his will, often leading to destructive rampages and conflicts that complicate Banner's civilian life. The Hulk's level of strength is normally conveyed as proportionate to his level of anger—in other words, Hulk's strength increases alongside his anger and is therefore potentially limitless. Commonly portrayed as a raging savage, the Hulk has been represented with other personalities based on Banner's fractured psyche, from a mindless, destructive force, to a brilliant warrior, or genius scientist in his own right. Despite both Hulk and Banner's desire for solitude, the character has a large supporting cast, including Banner's former lover Betty Ross, his friend Rick Jones, his cousin She-Hulk, sons Hiro-Kala and Skaar, and his co-founders of the superhero team, the Avengers. However, his uncontrollable power has brought him into conflict with his fellow heroes, and villains such as Betty's father Thunderbolt Ross, the Abomination, and his arch-nemesis the Leader. Lee said that the Hulk's creation was inspired by a combination of Frankenstein and Dr. Jekyll and Mr. Hyde.[4] Although the Hulk's coloration has varied throughout the character's publication history, the most usual color is green. He has two main catchphrases: "Hulk is strongest one there is!" and the better-known "HULK SMASH!", which has founded the basis for numerous pop culture memes.
-                    </p>
-            </div>
-            <div class="col-md-5">
-                <img src="./images/home/041.jpg" class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
-            </div>
-        </div>
-
-        <hr class="featurette-divider">
-
-        <!-- /END THE FEATURETTES -->
-        <!-- FOOTER -->
-    </div><!-- /.container -->
+    {{/result}}
+</div>
