@@ -5,12 +5,13 @@
     border-radius: 15px;
     background-image: url('https://images5.alphacoders.com/432/432931.jpg');
     background-repeat: no-repeat;
-    background-size: 80vw;
+    background-size: 100vw;
     background-position: center;
     margin-top: 0%;
     margin-left: 25%;
     width: 50vw;
-    height: 65vh;
+    height: 75vh;
+    padding: 0;
 }
 
 #username-label,
@@ -29,7 +30,7 @@
 
 #register-holder form {
     width: 20vw;
-    margin: 25px;
+    margin: 30px;
 }
 
 #register-holder form #btn-register {

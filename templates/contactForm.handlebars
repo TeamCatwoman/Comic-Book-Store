@@ -1,22 +1,22 @@
   <form id="contact_form" enctype="multipart/form-data" method="post" enctype="text/plain">
     	<div id=contact-right>
     	    <div class="row">
-    	        <label for="name">Your name:</label><br />
-    	        <input id="contact-name" class="input" name="name" type="text" value="" size="30" /><br />
+    	        <label for="contact-name">Your name:</label><br />
+    	        <input id="contact-name" class="input" name="name" type="text" value="" size="30" required/><br />
     	    </div>
     	    <div class="row">
-    	        <label for="email">Your email:</label><br />
-    	        <input id="contact-email" class="input" name="email" type="text" value="" size="30" /><br />
+    	        <label for="contact-email">Your email:</label><br />
+    	        <input id="contact-email" class="input" name="email" type="email" value="" size="30" required/><br />
     	    </div>
     	    <div class="row">
-    	        <label for="message">Your message:</label><br />
-    	        <textarea id="contact-message" class="input" name="message" rows="7" cols="32"></textarea><br />
+    	        <label for="contact-message">Your message:</label><br />
+    	        <textarea id="contact-message" class="input" name="message" rows="7" cols="32" required></textarea><br />
     	    </div>
     	    <div class="row" id="btn-contact-form">
-    	        <a href="#home"><strong class="contact btn btn-success" >Send</strong></a>
+    	        <a id="btn-send"><strong class="contact btn btn-success" >Send</strong></a>
     	    </div>
     	    <div class="row" id="btn-cancel-form">
-    	        <a href="#home"><strong class="contact btn btn-danger" >Cancel</strong></a>
+    	        <a href="#home" class="contact btn btn-danger"><strong>Cancel</strong></a>
     	    </div>
     	</div>
     	<div id=contact-right>

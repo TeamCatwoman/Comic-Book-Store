@@ -1,16 +1,16 @@
 <div id="register-holder">
     <form>
         <fieldset>
-            <label for="email"><p id="email">Email</p></label>
-            <input type="text" class="form-control" id="email-input" placeholder="e-mail">
-            <label for="username"><p id="username-label">Username</p></label>
-            <input type="text" class="form-control" id="username-input" placeholder="Username" required>            
-            <label for="password"><p id="password-label">Password</p></label>
-            <input type="password" class="form-control" id="password-input" placeholder="******">            
-            <label for="email"><p id="age">Age</p></label>
-            <input type="number" class="form-control" id="age-input" placeholder="Age">
-            <a href="#home" type="button" class="btn btn-success" id="btn-register">Register</a>
-             <a href="#home" type="button" class="btn btn-danger" id="btn-cancel">Cancel</a>
+            <label for="email-input"><p id="email">Email</p></label>
+            <input type="email" class="form-control" id="email-input" required>
+            <label for="username-input"><p id="username-label">Username</p></label>
+            <input name="username" type="text" title="Enter your username" class="form-control" id="username-input" required>            
+            <label for="password-input"><p>Password</p></label>
+            <input type="password"  class="form-control" id="password-input" required>         
+            <label for="age-input"><p id="age">Age</p></label>
+            <input type="number"  min="0" max="120" class="form-control" id="age-input" required>
+            <a type="submit" class="btn btn-success" id="btn-register">Register</a>
+            <a href="#home" type="button" class="btn btn-danger" id="btn-cancel">Cancel</a>
         </fieldset>
     </form>
 </div>

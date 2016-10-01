@@ -129,11 +129,11 @@ var router = (() => {
                     .catch(console.log);
             })
             .on('hot/read', () => {
-                Promise.all([tl.loadTemplate('gallery')])
-                    .then(([template]) => {
+                Promise.all([dataServer.images.get(), tl.loadTemplate('gallery')])
+                    .then(([data,template]) => {
                         $("#comic-book-holder").addClass('hidden');
                         $("#container-slider").addClass('hidden');
-                        $('#container').html(template);
+                        $('#container').html(template(data));
                     })
                     .catch(console.log);
             })

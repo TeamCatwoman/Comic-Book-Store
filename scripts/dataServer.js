@@ -105,6 +105,31 @@ var dataServer = (function () {
                 contentType: "application/json",
                 success: function (data) {
                     resolve(data);
+                },
+                error: function (error) {
+                    reject(error);
+                }
+            });
+        });
+        return images;
+    }
+    //end gallery images
+    //contact us
+    function contactUs() {
+        var contactUs = new Promise(function (resolve, reject) {
+            var object = { 
+                "name": $("#contact-name").val(),
+                "email": $("#contact-email").val(),
+                "message": $("#contact-message").val() 
+            };
+            $.ajax({
+                type: "POST",
+                url: `http://api.everlive.com/v1/${APP_ID}/contactUs`,
+                headers: { "Authorization": ACCESS_TOKEN },
+                contentType: "application/json",
+                data: JSON.stringify(object),
+                success: function (data) {
+                    resolve(data);
                     console.log(JSON.stringify(data));
                 },
                 error: function (error) {
@@ -113,9 +138,10 @@ var dataServer = (function () {
                 }
             });
         });
-        return images;
+        return contactUs;
     }
-    //end gallery images
+
+    //end contact us
     return {
         users: {
             register: userRegister,
@@ -128,6 +154,9 @@ var dataServer = (function () {
         },
         images: {
             get: getImages
+        },
+        contacts:{
+            send:contactUs
         }
     };
 })();

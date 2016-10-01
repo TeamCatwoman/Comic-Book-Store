@@ -1,6 +1,8 @@
 import { router } from './routing.js';
 import { register } from './signInUser.js';
 import { User } from './user.js';
+import { dataServer } from './dataServer.js';
+import { validation as validate } from './validation.js';
 
 const USERNAME_STORAGE_KEY = 'username-key',
     AUTH_KEY_STORAGE_KEY = 'auth-key-key';
@@ -17,26 +19,31 @@ $(() => { // on document ready
 
     router.init();
 
-    $('#root').on('click', '#btn-register-form', function(ev) {
+    //register form
+    $('#root').on('click', '#btn-register-form', function (ev) {
         $('#root').addClass('blurred');
         $('#root').addClass('disabled-background');
     });
-    $('#body').on('click', '#btn-register', function(ev) {
-        $('#root').removeClass('blurred');
-        $('#root').removeClass('disabled-background');
-    });
-    $('#body').on('click', '#btn-cancel', function(ev) {
-        $('#root').removeClass('blurred');
-        $('#root').removeClass('disabled-background');
-    });
+    
 
-    //register form
-    $('#container').on('click', '#btn-register', function(ev) {
+    $('#container').on('click', '#btn-register', function (ev) {
         let username = $("#username-input").val(),
             email = $("#email-input").val(),
             age = $("#age-input").val(),
             password = $("#password-input").val();
-        //debugger;
+       if (validate.email(email)) {
+       return;
+       }
+        if (validate.username(username)) {
+       return;
+       }
+       if (validate.password(password)) {
+       return;
+       }
+       if (validate.age(age)) {
+       return;
+       }
+          //debugger;
         let user = new User(username, age, email, password);
 
         let additionalInfo = {
@@ -46,7 +53,7 @@ $(() => { // on document ready
         };
 
         Everlive.$.Users.register(user.username, user.password, additionalInfo)
-            .then(function(data) {
+            .then(function (data) {
                 noty({
                     theme: 'relax',
                     text: 'Successfully register!',
@@ -55,24 +62,33 @@ $(() => { // on document ready
                     closeWith: ['click']
                 });
                 //alert(JSON.stringify(data));
-            }, function(error) {
+            }, function (err) {
                 noty({
                     theme: 'relax',
-                    text: "Unfortunately an error occurred: " + err.message,
+                    text: err.message,
                     type: 'error',
                     timeout: 3000,
                     closeWith: ['click']
                 });
-                // alert(JSON.stringify(error));
+                //  alert(JSON.stringify(error));
             });
+    });
+
+    $('#body').on('click', '#btn-register', function (ev) {
+        $('#root').removeClass('blurred');
+        $('#root').removeClass('disabled-background');
+    });
+    $('#body').on('click', '#btn-cancel', function (ev) {
+        $('#root').removeClass('blurred');
+        $('#root').removeClass('disabled-background');
     });
     //end register form
     //login 
-    $('#btn-login').on('click', function() {
+    $('#btn-login').on('click', function () {
         var username = $('#login-input').val();
         var password = $('#login-password').val();
         //debugger;
-        Everlive.$.Users.login(username, password, function(data) {
+        Everlive.$.Users.login(username, password, function (data) {
             var accessToken = data.result.access_token;
             localStorage.setItem(USERNAME_STORAGE_KEY, username);
             localStorage.setItem(AUTH_KEY_STORAGE_KEY, accessToken);
@@ -91,10 +107,10 @@ $(() => { // on document ready
             //alert("Successfully logged the user in! Received access token: " + accessToken);
             //console.log(data);
             //console.log("Logged in");
-        }, function(err) {
+        }, function (err) {
             noty({
                 theme: 'relax',
-                text: "Unfortunately an error occurred: " + err.message,
+                text: err.message,
                 type: 'error',
                 timeout: 3000,
                 closeWith: ['click']
@@ -105,8 +121,8 @@ $(() => { // on document ready
     });
     //login
     //logout
-    $('#btn-logout').on('click', function() {
-        Everlive.$.Users.logout(function() {
+    $('#btn-logout').on('click', function () {
+        Everlive.$.Users.logout(function () {
             localStorage.removeItem(AUTH_KEY_STORAGE_KEY);
             localStorage.removeItem(USERNAME_STORAGE_KEY);
             usernameSpan.text('');
@@ -122,7 +138,7 @@ $(() => { // on document ready
                 closeWith: ['click']
             });
             // alert("Logout successful!");
-        }, function(err) {
+        }, function (err) {
             noty({
                 theme: 'relax',
                 text: "Failed to logout: " + err.message,
@@ -136,7 +152,7 @@ $(() => { // on document ready
     //logout
 
     //Add to favorites
-    $('#container').on('click', '#add-favorite', function(ev) {
+    $('#container').on('click', '#add-favorite', function (ev) {
         let id = $(this).attr("data-id"),
             userId;
 
@@ -144,7 +160,7 @@ $(() => { // on document ready
         let comicBook = everlive.data('ComicBook');
 
         Everlive.$.Users.currentUser()
-            .then(function(data) {
+            .then(function (data) {
                 if (data.result === null) {
                     noty({
                         theme: 'relax',
@@ -159,7 +175,7 @@ $(() => { // on document ready
                 userId = data.result.Id;
 
                 comicBook.getById(id)
-                    .then(function(comic) {
+                    .then(function (comic) {
                         var attributes = {
                             "$push": {
                                 "Favourite": comic
@@ -170,7 +186,7 @@ $(() => { // on document ready
                             'Id': userId
                         };
 
-                        Everlive.$.Users.rawUpdate(attributes, filter, function(data) {
+                        Everlive.$.Users.rawUpdate(attributes, filter, function (data) {
                             noty({
                                 theme: 'relax',
                                 text: 'Successfully added to favorites!',
@@ -178,11 +194,11 @@ $(() => { // on document ready
                                 timeout: 1000,
                                 closeWith: ['click']
                             });
-                        }, function(error) {
+                        }, function (error) {
                             console.log(JSON.stringify(error));
                         });
                     });
-            }, function(error) {
+            }, function (error) {
                 noty({
                     theme: 'relax',
                     text: "You are not logged in: " + error.message,
@@ -192,4 +208,29 @@ $(() => { // on document ready
                 });
             });
     });
+    //send contact form data
+    $("body").on("click", "#btn-contact-form", function () {
+        let username = $("#contact-name").val(),
+            email = $("#contact-email").val(),
+            message = $("#contact-message").val();
+       if (validate.email(email)) {
+       return;
+       }
+        if (validate.username(username)) {
+       return;
+       }
+       if (validate.message(message)) {
+       return;
+       }
+        dataServer.contacts.send();
+        $("#container").html('').noty({
+                    theme: 'relax',
+                    text: 'Send successfully. We will contact you shortly!',
+                    type: 'success',
+                    timeout: 4000,
+                    closeWith: ['click']
+                });
+        $("#container-slider").removeClass('hidden');
+    });
+    //end send contact form data
 });
