@@ -69,6 +69,20 @@ footer {
 footer a {
     color: white;
 }
+#share-logos{
+    float: left;
+    margin-left: 10px; 
+}
+#share-logos img{
+    background-color:#999;
+    border-color: #999;
+
+}
+#share-logos a{ 
+    background-color:#999;
+    border-color: #999;
+    
+}
 
 .blurred {
     -webkit-filter: blur(10px);
