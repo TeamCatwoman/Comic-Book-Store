@@ -2,14 +2,15 @@ import { router } from './routing.js';
 import { User } from './models/user.js';
 import { userData } from './data/userData.js';
 import { data as comicData } from './data/data.js';
-import { dataServer } from './dataServer.js';
+import { dataServer } from './data/dataServer.js';
 import { validation as validate } from './validation.js';
 
 const USERNAME_STORAGE_KEY = 'username-key',
     AUTH_KEY_STORAGE_KEY = 'auth-key-key';
 new Everlive('co50xbssvfni5o0s');
 
-$(() => { // on document ready   
+$(() => {// on document ready   
+
     const loginForm = $('#login'),
         logoutForm = $('#logout'),
         registerForm = $('#btn-register-form'),
@@ -25,25 +26,25 @@ $(() => { // on document ready
         $('#root').addClass('blurred');
         $('#root').addClass('disabled-background');
     });
-    
+
 
     $('#container').on('click', '#btn-register', function (ev) {
         let username = $("#username-input").val(),
             email = $("#email-input").val(),
             age = $("#age-input").val(),
             password = $("#password-input").val();
-      if (validate.email(email)) {
-       return;
-       }
+        if (validate.email(email)) {
+            return;
+        }
         if (validate.username(username)) {
-       return;
-       }
-       if (validate.password(password)) {
-       return;
-       }
-       if (validate.age(age)) {
-       return;
-       }        let user = new User(username, age, email, password);
+            return;
+        }
+        if (validate.password(password)) {
+            return;
+        }
+        if (validate.age(age)) {
+            return;
+        } let user = new User(username, age, email, password);
 
         let additionalInfo = {
             Email: user.email,
@@ -150,22 +151,23 @@ $(() => { // on document ready
         let everlive = new Everlive('co50xbssvfni5o0s');
         let comicBook = everlive.data('ComicBook');
 
- userId = localStorage.getItem('current-id');
+        userId = localStorage.getItem('current-id');
         if (userId === null) {
-                    noty({
-                        theme: 'relax',
-                        text: "You are not logged in",
-                        type: 'error',
-                        timeout: 3000,
-                        closeWith: ['click']
-                    });
-                    return;
-                }
+            noty({
+                theme: 'relax',
+                text: "You are not logged in",
+                type: 'error',
+                timeout: 3000,
+                closeWith: ['click']
+            });
+            return;
+        }
 
         userData.getById(userId)
             .then((data) => {
                 comicData.getById("ComicBook", id)
-                    .then((comic) => {                        var attributes = {
+                    .then((comic) => {
+                        var attributes = {
                             "$push": {
                                 "Favourite": comic
                             }
@@ -186,38 +188,40 @@ $(() => { // on document ready
                         }, function (error) {
                             console.log(JSON.stringify(error));
                         });
-            }, function (error) {
-                noty({
-                    theme: 'relax',
-                    text: "You are not logged in: " + error.message,
-                    type: 'error',
-                    timeout: 3000,
-                    closeWith: ['click']
-                });
+                    }, function (error) {
+                        noty({
+                            theme: 'relax',
+                            text: "You are not logged in: " + error.message,
+                            type: 'error',
+                            timeout: 3000,
+                            closeWith: ['click']
+                        });
+                    });
             });
     });
-//send contact form data
-    $("body").on("click", "#btn-contact-form", function () {
-        let username = $("#contact-name").val(),
-            email = $("#contact-email").val(),
-            message = $("#contact-message").val();
-       if (validate.email(email)) {
-       return;
-       }
-        if (validate.username(username)) {
-       return;
-       }
-       if (validate.message(message)) {
-       return;
-       }
-        dataServer.contacts.send();
-        $("#container").html('').noty({
-                    theme: 'relax',
-                    text: 'Send successfully. We will contact you shortly!',
-                    type: 'success',
-                    timeout: 4000,
-                    closeWith: ['click']
-                });
-        $("#container-slider").removeClass('hidden');
-    });
-    //end send contact form data});
+        //send contact form data
+        $("body").on("click", "#btn-contact-form", function () {
+            let username = $("#contact-name").val(),
+                email = $("#contact-email").val(),
+                message = $("#contact-message").val();
+            if (validate.email(email)) {
+                return;
+            }
+            if (validate.username(username)) {
+                return;
+            }
+            if (validate.message(message)) {
+                return;
+            }
+            dataServer.contacts.send();
+            $("#container").html('').noty({
+                theme: 'relax',
+                text: 'Send successfully. We will contact you shortly!',
+                type: 'success',
+                timeout: 4000,
+                closeWith: ['click']
+            });
+            $("#container-slider").removeClass('hidden');
+        });
+        //end send contact form data});
+})();

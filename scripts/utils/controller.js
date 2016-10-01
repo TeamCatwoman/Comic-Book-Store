@@ -16,7 +16,7 @@ let controller = {
     comics: () => {
         data.get('ComicBook')
             .then((data) => {
-                debugger;
+                //debugger;
                 Promise.all([data, tl.loadTemplate('comicBooksPreview')])
                     .then(([data, template]) => $('#container').html(template(data)))
                     .catch(console.log);

@@ -52,11 +52,11 @@ let data = (function() {
                     "X-Everlive-Filter": JSON.stringify(filter)
                 },
                 success: function(data) {
-                    debugger;
+                   // debugger;
                     resolve(data);
                 },
                 error: function(error) {
-                    debugger;
+                   // debugger;
                     reject(error);
                 }
             });
@@ -67,7 +67,7 @@ let data = (function() {
         get,
         getById,
         getByCategory
-    }
+    };
 })();
 
 export { data };
