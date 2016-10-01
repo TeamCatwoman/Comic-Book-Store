@@ -1,10 +1,10 @@
-import { dataServer } from './dataServer.js';
+import { dataServer } from './data/dataServer.js';
+import { data as comicData } from './data/data.js';
 import { templateLoader as tl } from './template-loader.js';
-import { data as comicData } from './data.js';
-import { controller } from './controller.js';
+import { controller } from './utils/controller.js';
 
 let everlive = new Everlive('co50xbssvfni5o0s');
-let comicBook = everlive.data('ComicBook');
+
 new Everlive('co50xbssvfni5o0s');
 
 var router = (() => {
@@ -14,14 +14,7 @@ var router = (() => {
         navigo = new Navigo(null, false);
 
         navigo
-            .on('home', () => {
-                Promise.all([tl.loadTemplate('home')])
-                    .then((template) => $('#container').html(template))
-                    .then(() => {
-                        $("#container-slider").removeClass('hidden');
-                    })
-                    .catch(console.log);
-            })
+            .on('home', controller.home)
             .on('comic', controller.comics)
             .on('about', () => {
                 // Promise.all(['get the data', tl.loadTemplate('load the template by name')])
@@ -47,77 +40,35 @@ var router = (() => {
                             alert(JSON.stringify(error));
                         });
             })
-            .on('register', () => {
-                //debugger;
-                Promise.all([tl.loadTemplate('register')])
-                    .then((template) => $('#container').html(template))
-                    .then(() => {
-                        $("#container-slider").removeClass('hidden');
-                    })
-                    .catch(console.log);
-            })
+            .on('register', controller.register)
             .on('details/:id', (params) => {
                 controller.detailedComicBook(params.id);
             })
-            .on('marvel', //controller.categories('Marvel') 
-                () => {
-                    var filter = new Everlive.Query();
-                    filter.where().eq('Category', 'Marvel');
-
-                    comicBook.get(filter)
-                        .then(function(data) {
-                                let books = data;
-                                Promise.all([books, tl.loadTemplate('comicBooksPreview')])
-                                    .then(([books, template]) => $('#container').html(template(books)))
-                                    .catch(console.log);
-                            },
-                            function(error) {
-                                alert(JSON.stringify(error));
-                            })
-                        .then(() => {
-                            $("#container-slider").removeClass('hidden');
-                        });
-                })
-            .on('dc', () => {
-                var filter = new Everlive.Query();
-                filter.where().eq('Category', 'DC Comics');
-
-                comicBook.get(filter)
-                    .then(function(data) {
-                            let books = data;
-                            Promise.all([books, tl.loadTemplate('comicBooksPreview')])
-                                .then(([books, template]) => $('#container').html(template(books)))
-                                .catch(console.log);
-                        },
-                        function(error) {
-                            alert(JSON.stringify(error));
-                        })
-                    .then(() => {
+            .on('marvel', () => {
+                comicData.getByCategory('ComicBook', 'Marvel')
+                    .then((data) => {
+                        Promise.all([data, tl.loadTemplate('comicBooksPreview')])
+                            .then(([data, template]) => $('#container').html(template(data)))
+                            .catch(console.log);
+                    }, (error) => {
+                        alert(JSON.stringify(error));
+                    }).then(() => {
                         $("#container-slider").removeClass('hidden');
                     });
             })
-            .on('favorites', () => {
-                Everlive.$.Users.currentUser()
-                    .then((properties) => {
-                        return new Promise((resolve, reject) => {
-                            let favoriteComics = properties.result.Favourite;
-                            // console.log(favoriteComics);
-                            let favs = {
-                                "count": 0,
-                                "result": favoriteComics
-                            };
-                            resolve(favs);
-                        });
-                    })
-                    .then(function(favs) {
-                        Promise.all([favs, tl.loadTemplate('favoriteComics')])
-                            .then(([favs, template]) => $('#container').html(template(favs)))
+            .on('dc', () => {
+                comicData.getByCategory('ComicBook', 'DC Comics')
+                    .then((data) => {
+                        Promise.all([data, tl.loadTemplate('comicBooksPreview')])
+                            .then(([data, template]) => $('#container').html(template(data)))
                             .catch(console.log);
-                    })
-                    .then(() => {
-                        $("#container-slider").addClass('hidden');
+                    }, (error) => {
+                        alert(JSON.stringify(error));
+                    }).then(() => {
+                        $("#container-slider").removeClass('hidden');
                     });
             })
+            .on('favorites', controller.favorites)
             .on('hot', () => {
                 Promise.all([dataServer.get.book(), tl.loadTemplate('online')])
                     .then(([data, template]) => {
@@ -137,6 +88,7 @@ var router = (() => {
                     })
                     .catch(console.log);
             })
+            //.on(() => { router.navigate("/home") })
             .resolve();
     }
     return {

@@ -1,8 +1,6 @@
 let data = (function() {
     const APP_ID = 'co50xbssvfni5o0s',
         ACCESS_TOKEN = 'v0yhnv1ybqbskxn24rt6qbu3fmi3whmz';
-    // let everlive = new Everlive('co50xbssvfni5o0s');
-    // let comicBook = everlive.data('ComicBook');
 
     function getById(typeName, id) {
         return new Promise((resolve, reject) => {
@@ -44,9 +42,8 @@ let data = (function() {
 
     function getByCategory(typeName, category) {
         let filter = { 'Category': category };
-        let url = `http://api.everlive.com/v1/${APP_ID}/${typeName}`;
-
         return new Promise((resolve, reject) => {
+            let url = `http://api.everlive.com/v1/${APP_ID}/${typeName}`;
             $.ajax({
                 url: url,
                 type: "GET",
@@ -55,9 +52,11 @@ let data = (function() {
                     "X-Everlive-Filter": JSON.stringify(filter)
                 },
                 success: function(data) {
+                    debugger;
                     resolve(data);
                 },
                 error: function(error) {
+                    debugger;
                     reject(error);
                 }
             });

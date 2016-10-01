@@ -14,7 +14,6 @@ $(".navbar-nav").on("mouseout", function(event) {
 
 $(".dropdown-menu").on("mouseover", function(event) {
     let target = event.target;
-    // debugger;
     $(target.parentElement).addClass("active");
     $(this).css("display", "block");
 });
