@@ -1,0 +1,164 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Online comic store "Catwoman"</title>
+    <link rel="icon" href="./images/catwoman.png" type="image/x-icon">
+    <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/homePageSlider.css" />
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/register-page.css">
+    <link rel="stylesheet" href="./css/contactForm.css">
+    <link rel="stylesheet" href="./css/comics.css">
+    <link rel="stylesheet" href="./css/readOnline.css">
+    <link rel="stylesheet" href="./css/blueimp.css">
+    <link rel="stylesheet" href="./css/image-gallery.css">
+    <link rel="stylesheet" href="./css/gallery.css">
+</head>
+
+<body id="body">
+    <div id="root">
+        <!--start blurred content-->
+        <!-- NAVBAR ================================================== -->
+        <div class="container">
+
+            <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="margin-bottom: 0px;">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    </div>
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav nav-pills">
+                            <li>
+                                <a class="navbar-brand logo" href="#home"></a>
+                            </li>
+                            <!--<li><a href="#home">Home</a></li>-->
+                            <li id="comics"><a href="#comic">Comics</a></li>
+                            <li class="dropdown" id="nav-dropdown">
+                                <a href="#categories" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories  <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#marvel">Marvel</a></li>
+                                    <li><a href="#dc">DC</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#hot" class="status hot"><span class="glyphicon glyphicon-fire" style="color:#c92626" aria-hidden="true"></span> HOT</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                            <li class="hidden" id="favorites"><a href="#favorites"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> Favorites</a></li>
+                        </ul>
+                        <form id="nav-login-form" class="navbar-collapse collapse navbar-form pull-right">
+                            <div id="login" class="form-group">
+                                <input id="login-input" type="text" class="form-control" size="15" placeholder="Username">
+                                <input id="login-password" type="password" class="form-control" size="12" placeholder="Password">
+                                <a href="#log-in" id="btn-login" type="submit" class="btn btn-default " class="navbar-link">Login</a>
+                            </div>
+                            <div id="logout" class="form-group hidden pull-right">
+                                Hello, <a href="#log-out" class="navbar-link"><strong id="span-username"></strong></a>
+                                <a id="btn-logout" type="submit" class="btn btn-default">Logout</a>
+                            </div>
+                            <div id="btn-register-form" class="form-group">
+                                <a href="#register" class="navbar-link"><strong id="span-username" class="btn btn-primary" >Register</strong></a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div id="container-slider">
+            <div class="container">
+                <!-- Use a container to wrap the slider, the purpose is to enable slider to always fit width of the wrapper while window resize -->
+                <!-- Jssor Slider Begin -->
+                <div id="slider1_container" style="visibility: hidden; position: relative; margin: 0 auto; width: 1140px; height: 442px; overflow: hidden;">
+                    <!-- Loading Screen -->
+                    <div u="loading" style="position: absolute; top: 0px; left: 0px;">
+                        <div style="filter: alpha(opacity=70); opacity:0.7; position: absolute; display: block; background-color: #000; top: 0px; left: 0px;width: 100%; height:100%;">
+                        </div>
+                        <div style="position: absolute; display: block; background: url(./images/loading.gif) no-repeat center center; top: 0px; left: 0px;width: 100%;height:100%;">
+                        </div>
+                    </div>
+                    <!-- Slides Container -->
+                    <div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 1140px; height: 442px; overflow: hidden;">
+                        <div>
+                            <img u="image" src2="./images/home/kitty.jpg" />
+                        </div>
+                        <div>
+                            <img u="image" src2="./images/home/batman.jpg" />
+                        </div>
+                        <div>
+                            <img u="image" src2="./images/home/03.jpg" />
+                        </div>
+                        <div>
+                            <img u="image" src2="./images/home/04.jpg" />
+                        </div>
+                    </div>
+                    <!--#region Bullet Navigator Skin Begin -->
+                    <!-- bullet navigator container -->
+                    <div u="navigator" class="jssorb05" style="bottom: 16px; right: 6px;">
+                        <!-- bullet navigator item prototype -->
+                        <div u="prototype"></div>
+                    </div>
+                    <!-- Arrow Left -->
+                    <span u="arrowleft" class="jssora11l" style="top: 123px; left: 8px;">
+            </span>
+                    <!-- Arrow Right -->
+                    <span u="arrowright" class="jssora11r" style="top: 123px; right: 8px;">
+            </span>
+                    <!--#endregion Arrow Navigator Skin End -->
+                </div>
+                <!-- Jssor Slider End -->
+            </div>
+        </div>
+    </div>
+    <!--end of blured content-->
+    <main>
+        <div id="container">
+
+        </div>
+        <!--main container-->
+    </main>
+    <footer>
+        <p class="pull-right"></p>
+        <p id="footer-text">Telerik Acedemy Season 7. Developed by <em>B. Belutov, T. Stoyanova</em></p>
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!--lib-->
+    <script src="./bower_components/jquery/dist/jquery.js"></script>
+    <script src="./bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="./bower_components/noty/js/noty/packaged/jquery.noty.packaged.min.js"></script>
+    <script src="./node_modules/holderjs/docs.min.js"></script>
+    <script src="./node_modules/holderjs/holder.min.js"></script>
+    <script src="./node_modules/handlebars/dist/handlebars.min.js"></script>
+    <script src="./node_modules/navigo/lib/navigo.min.js"></script>
+    <script src="./bower_components/everlive/min/everlive.all.min.js"></script>
+    <script src="./node_modules/systemjs/dist/system.js"></script>
+    <!--lib-->
+    <!--app-->
+
+    <script src="scripts/navigationBarHandler.js"></script>
+    <!--gallery-->
+    <!--<script src="./bower_components/googleapis.js"></script>-->
+    <script src="./bower_components/blueimp.js"></script>
+    <!--<script src="./scripts/image-gallery.js"></script>-->
+    <script src="./scripts/galleries/gallery.js"></script>
+    <!--gallery-->
+    <script src="./node_modules/jssorSlider/jssor.slider.mini.js"></script>
+    <script src="./scripts/galleries/ie10-viewport-bug-workaround.js"></script>
+    <script src="./scripts/galleries/homePageSlider.js"></script>
+    <!--app-->
+    <script src="./scripts/system-config.js"></script>
+    <script>
+        System.import('main');
+    </script>
+</body>
+
+</html>
