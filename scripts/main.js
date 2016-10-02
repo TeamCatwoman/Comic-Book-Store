@@ -1,7 +1,7 @@
 import { router } from './routing.js';
 import { User } from './models/user.js';
 import { userData } from './data/userData.js';
-import { data as comicData } from './data/data.js';
+import { data as dataService } from './data/data.js';
 import { dataServer } from './data/dataServer.js';
 import { validation as validate } from './utils/validation.js';
 
@@ -164,9 +164,9 @@ $(() => { // on document ready
             return;
         }
 
-        userData.getById(userId)
+        dataService.user(userId)
             .then((data) => {
-                comicData.getById("ComicBook", id)
+                dataService.getComicBookById(id)
                     .then((comic) => {
                         var attributes = {
                             "$push": {

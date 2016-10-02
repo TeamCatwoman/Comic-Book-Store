@@ -24,12 +24,44 @@ let data = (function() {
         return requester.get(`http://api.everlive.com/v1/${APP_ID}/contacts`);
     }
 
+    function getCategory(category) {
+
+        let filter = { 'Category': category };
+
+        let options = {
+            headers: {
+                "Authorization": ACCESS_TOKEN,
+                "X-Everlive-Filter": JSON.stringify(filter)
+            }
+        };
+
+        return requester.get(`http://api.everlive.com/v1/${APP_ID}/ComicBook`, options);
+
+        // return new Promise((resolve, reject) => {
+        //     $.ajax({
+        //         url: url,
+        //         type: "GET",
+        //         headers: {
+
+        //         },
+        //         success: function(data) {
+        //             resolve(data);
+        //         },
+        //         error: function(error) {
+        //             reject(error);
+        //         }
+        //     });
+        // });
+
+    }
+
     return {
         getComicBooks,
         getComicBookById,
         homePage,
         user,
-        contacts
+        contacts,
+        getCategory
     };
 })();
 

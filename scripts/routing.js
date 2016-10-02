@@ -29,7 +29,7 @@ var router = (() => {
                 controller.loadDetailedComicBook(params.id);
             })
             .on('marvel', () => {
-                comicData.getByCategory('ComicBook', 'Marvel')
+                comicData.getCategory('Marvel')
                     .then((data) => {
                         Promise.all([data, tl.loadTemplate('comicBooksPreview')])
                             .then(([data, template]) => $('#container').html(template(data)))
@@ -41,7 +41,7 @@ var router = (() => {
                     });
             })
             .on('dc', () => {
-                comicData.getByCategory('ComicBook', 'DC Comics')
+                comicData.getCategory('DC Comics')
                     .then((data) => {
                         Promise.all([data, tl.loadTemplate('comicBooksPreview')])
                             .then(([data, template]) => $('#container').html(template(data)))
