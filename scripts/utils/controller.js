@@ -119,16 +119,14 @@ let Controller = (function() {
         }
 
         loadContacts() {
-            Promise.all([tl.loadTemplate('contactForm')])
-                .then((template) => $('#container').html(template))
-                .then(() => {
-                    $("#container-slider").addClass('hidden');
-                });
             data.contacts()
                 .then(function(data) {
                         let contacts = data.Result[0];
                         Promise.all([contacts, tl.loadTemplate('contactForm')])
-                            .then(([contacts, template]) => $('#container').html(template(contacts)))
+                            .then(([contacts, template]) => {
+                            $('#container').html(template(contacts));
+                             $("#container-slider").addClass('hidden');
+                            })
                             .catch(console.log);
                     },
                     function(error) {
