@@ -16,10 +16,10 @@ $(() => { // on document ready
         registerForm = $('#btn-register-form'),
         usernameSpan = $('#span-username'),
         favorites = $('#favorites');
-    // start navigo
-    //end navigo
 
+    // start navigo
     router.init();
+    //end navigo
 
     //register form
     $('#root').on('click', '#btn-register-form', function(ev) {
