@@ -1,4 +1,4 @@
-import { ComicBook } from '../../scripts/models/comicBook.js';
+import { ComicBook } from '../scripts/models/comicBook.js';
 import { data } from '../scripts/data/data.js';
 import { requester } from '../scripts/requester.js';
 
@@ -65,7 +65,7 @@ describe('Data Tests', function() {
                         .firstCall
                         .args[0];
 
-                    expect(actual).to.equal('http://api.everlive.com/v1/co50xbssvfni5o0s/ComicBook');
+                    expect(actual).to.equal('https://api.everlive.com/v1/co50xbssvfni5o0s/ComicBook');
                 })
                 .then(done, done);
         });
@@ -101,7 +101,7 @@ describe('Data Tests', function() {
                         .firstCall
                         .args[0];
 
-                    expect(actual).to.equal('http://api.everlive.com/v1/co50xbssvfni5o0s/ComicBook/15');
+                    expect(actual).to.equal('https://api.everlive.com/v1/co50xbssvfni5o0s/ComicBook/15');
                 })
                 .then(done, done);
         });
@@ -137,7 +137,7 @@ describe('Data Tests', function() {
                         .firstCall
                         .args[0];
 
-                    expect(actual).to.equal('http://api.everlive.com/v1/co50xbssvfni5o0s/Users/9');
+                    expect(actual).to.equal('https://api.everlive.com/v1/co50xbssvfni5o0s/Users/9');
                 })
                 .then(done, done);
         });
@@ -173,7 +173,7 @@ describe('Data Tests', function() {
                         .firstCall
                         .args[0];
 
-                    expect(actual).to.equal('http://api.everlive.com/v1/co50xbssvfni5o0s/contacts');
+                    expect(actual).to.equal('https://api.everlive.com/v1/co50xbssvfni5o0s/contacts');
                 })
                 .then(done, done);
         });
@@ -209,7 +209,7 @@ describe('Data Tests', function() {
                         .firstCall
                         .args[0];
 
-                    expect(actual).to.equal('http://api.everlive.com/v1/co50xbssvfni5o0s/HeroHistory');
+                    expect(actual).to.equal('https://api.everlive.com/v1/co50xbssvfni5o0s/HeroHistory');
                 })
                 .then(done, done);
         });
