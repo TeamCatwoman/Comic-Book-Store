@@ -13,7 +13,7 @@ const templateLoader = (() => {
                         resolve(template);
                     })
                     .fail((reject) => {
-                        debugger;
+                        //debugger;
                         reject();
                     });
             }
