@@ -12,23 +12,18 @@ var router = (() => {
         controller;
 
     function init() {
-        navigo = new Navigo("catwomancomicstore.apphb.com", false);
+        navigo = new Navigo(null, false);
         controller = new Controller();
 
-        navigo
-            .on('home', controller.loadHomeTemplate)
-            .on('comic', controller.loadComicBooks)
-            .on('about', () => {
-                // Promise.all(['get the data', tl.loadTemplate('load the template by name')])
-                //     .then(([data, template])=> $('#atach to DOM').html(template(data)))
-                //     .catch(console.log);
-            })
-            .on('contact', controller.loadContacts)
-            .on('register', controller.loadRegister)
-            .on('details/:id', (params) => {
+navigo.on({
+    'home': controller.loadHomeTemplate,
+    'comic': controller.loadComicBooks,
+    'contact': controller.loadContacts,
+    'register': controller.loadRegister,
+    'details/:id': (params) => {
                 controller.loadDetailedComicBook(params.id);
-            })
-            .on('marvel', () => {
+            },
+    'marvel': () => {
                 comicData.getCategory('Marvel')
                     .then((data) => {
                         Promise.all([data, tl.loadTemplate('comicBooksPreview')])
@@ -39,8 +34,8 @@ var router = (() => {
                     }).then(() => {
                         $("#container-slider").removeClass('hidden');
                     });
-            })
-            .on('dc', () => {
+            },
+    'dc': () => {
                 comicData.getCategory('DC Comics')
                     .then((data) => {
                         Promise.all([data, tl.loadTemplate('comicBooksPreview')])
@@ -51,9 +46,9 @@ var router = (() => {
                     }).then(() => {
                         $("#container-slider").removeClass('hidden');
                     });
-            })
-            .on('favorites', controller.loadFavorites)
-            .on('hot', () => {
+            },  
+    'favorites': controller.loadFavorites,
+    'hot': () => {
                 Promise.all([dataServer.get.book(), tl.loadTemplate('readOnline')])
                     .then(([data, template]) => {
                         $("#comic-book-holder").removeClass('hidden');
@@ -62,8 +57,8 @@ var router = (() => {
                         $("#hot").html(template(data[0]));
                     })
                     .catch(console.log);
-            })
-            .on('hot/read', () => {
+            },
+    'hot/read': () => {
                 Promise.all([dataServer.images.get(), tl.loadTemplate('gallery')])
                     .then(([data, template]) => {
                         $("#comic-book-holder").addClass('hidden');
@@ -71,9 +66,61 @@ var router = (() => {
                         $('#container').html(template(data));
                     })
                     .catch(console.log);
-            })
-            //.on(() => { router.navigate("/home") })
-            .resolve();
+            }}).resolve();
+
+        // navigo
+        //     .on('home', controller.loadHomeTemplate)
+        //     .on('comic', controller.loadComicBooks)
+        //     .on('contact', controller.loadContacts)
+        //     .on('register', controller.loadRegister)
+        //     .on('details/:id', (params) => {
+        //         controller.loadDetailedComicBook(params.id);
+        //     })
+        //     .on('marvel', () => {
+        //         comicData.getCategory('Marvel')
+        //             .then((data) => {
+        //                 Promise.all([data, tl.loadTemplate('comicBooksPreview')])
+        //                     .then(([data, template]) => $('#container').html(template(data)))
+        //                     .catch(console.log);
+        //             }, (error) => {
+        //                 alert(JSON.stringify(error));
+        //             }).then(() => {
+        //                 $("#container-slider").removeClass('hidden');
+        //             });
+        //     })
+        //     .on('dc', () => {
+        //         comicData.getCategory('DC Comics')
+        //             .then((data) => {
+        //                 Promise.all([data, tl.loadTemplate('comicBooksPreview')])
+        //                     .then(([data, template]) => $('#container').html(template(data)))
+        //                     .catch(console.log);
+        //             }, (error) => {
+        //                 alert(JSON.stringify(error));
+        //             }).then(() => {
+        //                 $("#container-slider").removeClass('hidden');
+        //             });
+        //     })
+        //     .on('favorites', controller.loadFavorites)
+        //     .on('hot', () => {
+        //         Promise.all([dataServer.get.book(), tl.loadTemplate('readOnline')])
+        //             .then(([data, template]) => {
+        //                 $("#comic-book-holder").removeClass('hidden');
+        //                 $("#container-slider").addClass('hidden');
+        //                 $('#container').append("<div id='hot' />");
+        //                 $("#hot").html(template(data[0]));
+        //             })
+        //             .catch(console.log);
+        //     })
+        //     .on('hot/read', () => {
+        //         Promise.all([dataServer.images.get(), tl.loadTemplate('gallery')])
+        //             .then(([data, template]) => {
+        //                 $("#comic-book-holder").addClass('hidden');
+        //                 $("#container-slider").addClass('hidden');
+        //                 $('#container').html(template(data));
+        //             })
+        //             .catch(console.log);
+        //     })
+        //     .resolve();
     }
     return {
         init
