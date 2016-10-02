@@ -15,15 +15,15 @@ var router = (() => {
         navigo = new Navigo(null, false);
         controller = new Controller();
 
-navigo.on({
-    'home': controller.loadHomeTemplate,
-    'comic': controller.loadComicBooks,
-    'contact': controller.loadContacts,
-    'register': controller.loadRegister,
-    'details/:id': (params) => {
+        navigo.on({
+            'home': controller.loadHomeTemplate,
+            'comic': controller.loadComicBooks,
+            'contact': controller.loadContacts,
+            'register': controller.loadRegister,
+            'details/:id': (params) => {
                 controller.loadDetailedComicBook(params.id);
             },
-    'marvel': () => {
+            'marvel': () => {
                 comicData.getCategory('Marvel')
                     .then((data) => {
                         Promise.all([data, tl.loadTemplate('comicBooksPreview')])
@@ -35,7 +35,7 @@ navigo.on({
                         $("#container-slider").removeClass('hidden');
                     });
             },
-    'dc': () => {
+            'dc': () => {
                 comicData.getCategory('DC Comics')
                     .then((data) => {
                         Promise.all([data, tl.loadTemplate('comicBooksPreview')])
@@ -46,9 +46,9 @@ navigo.on({
                     }).then(() => {
                         $("#container-slider").removeClass('hidden');
                     });
-            },  
-    'favorites': controller.loadFavorites,
-    'hot': () => {
+            },
+            'favorites': controller.loadFavorites,
+            'hot': () => {
                 Promise.all([dataServer.get.book(), tl.loadTemplate('readOnline')])
                     .then(([data, template]) => {
                         $("#comic-book-holder").removeClass('hidden');
@@ -58,7 +58,7 @@ navigo.on({
                     })
                     .catch(console.log);
             },
-    'hot/read': () => {
+            'hot/read': () => {
                 Promise.all([dataServer.images.get(), tl.loadTemplate('gallery')])
                     .then(([data, template]) => {
                         $("#comic-book-holder").addClass('hidden');
@@ -66,8 +66,18 @@ navigo.on({
                         $('#container').html(template(data));
                     })
                     .catch(console.log);
-            }}).resolve();
+            }
+        }).resolve();
 
+        navigo.notFound(() => {
+            Promise.all([tl.loadTemplate('pageNotFound')])
+                .then(([template]) => {
+                    $("#container-slider").addClass('hidden');
+                    $('#container').html(template(template));
+                })
+                .catch(console.log);
+
+        });
         // navigo
         //     .on('home', controller.loadHomeTemplate)
         //     .on('comic', controller.loadComicBooks)
