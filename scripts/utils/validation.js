@@ -77,7 +77,7 @@ var validation = (function() {
                 theme: 'relax',
                 text: "Message must be minimum 20 symbols of letters and numbers",
                 type: 'error',
-                timeout: 3000,
+                timeout: 4000,
                 closeWith: 'animated bounceOutLeft'
             });
             return true;
