@@ -12,7 +12,7 @@ var router = (() => {
         controller;
 
     function init() {
-        navigo = new Navigo(null, false);
+        navigo = new Navigo("https://cdn.rawgit.com/TeamCatwoman/Comic-Book-Store/master/index.html", false);
         controller = new Controller();
 
         navigo
