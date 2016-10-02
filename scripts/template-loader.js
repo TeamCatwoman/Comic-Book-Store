@@ -12,7 +12,7 @@ const templateLoader = (() => {
                         cache[templateName] = template;
                         resolve(template);
                     })
-                    .fail((reject) => {
+                    .fail(() => {
                         //debugger;
                         reject();
                     });
