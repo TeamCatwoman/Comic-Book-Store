@@ -5,7 +5,7 @@ let userData = (function() {
     function getById(id) {
         return new Promise((resolve, reject) => {
             $.ajax({
-                url: `http://api.everlive.com/v1/${APP_ID}/Users/${id}`,
+                url: `https://api.everlive.com/v1/${APP_ID}/Users/${id}`,
                 type: "GET",
                 headers: {
                     "Authorization": ACCESS_TOKEN
@@ -24,7 +24,7 @@ let userData = (function() {
         return new Promise((resolve, reject) => {
             $.ajax({
                 type: "POST",
-                url: `http://api.everlive.com/v1/${APP_ID}/oauth/token`,
+                url: `https://api.everlive.com/v1/${APP_ID}/oauth/token`,
                 contentType: "application/json",
                 data: JSON.stringify(user),
                 success: function(data) {
@@ -39,7 +39,7 @@ let userData = (function() {
 
     function logout() {
         return new Promise((resolve, reject) => {
-            let url = `http://api.everlive.com/v1/${APP_ID}/oauth/logout`;
+            let url = `https://api.everlive.com/v1/${APP_ID}/oauth/logout`;
             $.ajax({
                 type: "GET",
                 url: url,
@@ -58,7 +58,7 @@ let userData = (function() {
 
     function get() {
         return new Promise((resolve, reject) => {
-            let url = `http://api.everlive.com/v1/${APP_ID}/Users/me`;
+            let url = `https://api.everlive.com/v1/${APP_ID}/Users/me`;
             $.ajax({
                 type: "GET",
                 url: url,

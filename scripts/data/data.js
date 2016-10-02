@@ -5,23 +5,23 @@ const APP_ID = 'co50xbssvfni5o0s',
 
 let data = (function() {
     function getComicBooks() {
-        return requester.get(`http://api.everlive.com/v1/${APP_ID}/ComicBook`);
+        return requester.get(`https://api.everlive.com/v1/${APP_ID}/ComicBook`);
     }
 
     function getComicBookById(id) {
-        return requester.get(`http://api.everlive.com/v1/${APP_ID}/ComicBook/${id}`);
+        return requester.get(`https://api.everlive.com/v1/${APP_ID}/ComicBook/${id}`);
     }
 
     function homePage() {
-        return requester.get(`http://api.everlive.com/v1/${APP_ID}/HeroHistory`);
+        return requester.get(`https://api.everlive.com/v1/${APP_ID}/HeroHistory`);
     }
 
     function user(id) {
-        return requester.get(`http://api.everlive.com/v1/${APP_ID}/Users/${id}`);
+        return requester.get(`https://api.everlive.com/v1/${APP_ID}/Users/${id}`);
     }
 
     function contacts() {
-        return requester.get(`http://api.everlive.com/v1/${APP_ID}/contacts`);
+        return requester.get(`https://api.everlive.com/v1/${APP_ID}/contacts`);
     }
 
     function getCategory(category) {
@@ -35,7 +35,7 @@ let data = (function() {
             }
         };
 
-        return requester.get(`http://api.everlive.com/v1/${APP_ID}/ComicBook`, options);
+        return requester.get(`https://api.everlive.com/v1/${APP_ID}/ComicBook`, options);
 
         // return new Promise((resolve, reject) => {
         //     $.ajax({

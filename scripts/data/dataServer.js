@@ -97,7 +97,7 @@ var dataServer = (function () {
             var sortExp = { "Filename": 1 };
             $.ajax({
                 type: "GET",
-                url: `http://api.everlive.com/v1/${APP_ID}/Files`,
+                url: `https://api.everlive.com/v1/${APP_ID}/Files`,
                 headers: {
                     "Authorization": ACCESS_TOKEN,
                     "X-Everlive-Sort": JSON.stringify(sortExp)
@@ -124,7 +124,7 @@ var dataServer = (function () {
             };
             $.ajax({
                 type: "POST",
-                url: `http://api.everlive.com/v1/${APP_ID}/contactUs`,
+                url: `https://api.everlive.com/v1/${APP_ID}/contactUs`,
                 headers: { "Authorization": ACCESS_TOKEN },
                 contentType: "application/json",
                 data: JSON.stringify(object),
