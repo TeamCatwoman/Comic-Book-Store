@@ -30,7 +30,7 @@ var validation = (function() {
     }
 
     function validateUsername(username) {
-        let letters = /^[0-9a-zA-Z]+$/;
+        let letters = /^[A-Za-z0-9 _]*[A-Za-z0-9][A-Za-z0-9 _]*$/;
 
         if (!username.match(letters)) {
             noty({
@@ -70,7 +70,7 @@ var validation = (function() {
     }
 
     function validateMessage(message) {
-        let letters = /^[0-9a-zA-Z]+$/;
+        let letters = /^[A-Za-z0-9 _]*[A-Za-z0-9][A-Za-z0-9 _]*$/;
 
         if (message.length < 20 || !message.match(letters)) {
             noty({
