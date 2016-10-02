@@ -12,7 +12,7 @@ var router = (() => {
         controller;
 
     function init() {
-        navigo = new Navigo(null, false);
+        navigo = new Navigo("catwomancomicstore.apphb.com", false);
         controller = new Controller();
 
         navigo
